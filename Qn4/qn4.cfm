@@ -7,15 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <form action="qn4.cfm" method="post">
-            <input type="submit" name="submit" value="Find">
-        </form>
-    </div>
-    <div>
-        <cfif StructKeyExists(form, "submit")>
-            <cfset object=createObject("component","component/qn4").show()>
-        </cfif>
+    <div> 
+        <cfinvoke component = "component/qn4" method = "show">
+        </cfinvoke> 
     </div>
 </body>
 </html>
