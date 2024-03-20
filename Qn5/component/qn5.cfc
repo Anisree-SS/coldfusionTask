@@ -26,8 +26,9 @@
             <cfset local.remaining=DateDiff("d",local.currentDate,local.nextBirthday)>
             <cfreturn local.remaining>
         <cfelse>
-            <cfreturn local.nextBirthday>
+            <cfset nextBirthday = DateAdd("yyyy", 1, nextBirthday)>
+            <cfset local.remaining=DateDiff("d",local.currentDate,local.nextBirthday)>
+            <cfreturn local.remaining>
         </cfif>
     </cffunction>
-
 </cfcomponent>
