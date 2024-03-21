@@ -1,0 +1,15 @@
+*{
+    padding:opx;
+    margin: 0px;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+
+input{
+    margin: 10px;
+}
