@@ -13,26 +13,28 @@
             <input type="number" name="number"><br> 
             <input type="submit" name="submit" value="show">
         </form>  
+    </div>
         <cfif StructKeyExists(form,"number")>
             <cfset local.object = createObject("component","component/qn12")>
             <cfset alldatas=#local.object.findName()#>
             <cfset firstNmae=#local.object.getFirstName(form.number)#>
+            <cfoutput>
+                <div>
+                    <table>
+                    <cfloop query="alldatas">
+                    <tr>
+                        <td>#alldatas.fname#</td>
+                        <td>#alldatas.lname#</td>
+                    </tr>
+                    </cfloop>
+                    </table>
+                </div>
+                <div>
+                    <cfdump var = "#firstNmae#">
+                </div>
+            </cfoutput>
         </cfif>
-    </div>
-        <cfoutput>
-        <div>
-            <table>
-            <cfloop query="alldatas">
-              <tr>
-                <td>#alldatas.fname#</td>
-                <td>#alldatas.lname#</td>
-              </tr>
-            </cfloop>
-            </table>
-        </div>
-        <div>
-            <cfdump var = "#firstNmae#">
-        </div>
-        </cfoutput>
+  
+        
 </body>
 </html>
