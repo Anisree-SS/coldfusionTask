@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <script src="script/validation.js"></script>
     <link rel="stylesheet" href="./style/styleQn24.css">
+    <script src="./script/jquery.min.js"></script>
+    <script src="./script/validation.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
             <input type="email" name="email" id="email">
             <button type="button" id="check">Check</button>
             <br>
-            <input type="submit" value="submit" name="submit" disabled>
+            <input type="submit" id="submitButton" value="submit" name="submit" disabled>
         </form>        
     </div>
     <div>
