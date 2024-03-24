@@ -3,9 +3,11 @@
         <cfargument name="userName" required="true">
         <cfargument name="password" required="true">
         <cfif arguments.userName Eq "admin" && arguments.password Eq "admin">
-            <cfreturn true>
+                    <cfset session.login=true>
+                    <cflocation url="welcome.cfm">
             <cfelse>
-                <cfreturn false>
+                <cfset session.login=false>  
+                <cfreturn "invalid User name or password">
         </cfif>
     </cffunction>
 </cfcomponent>
