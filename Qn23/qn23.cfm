@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Qn23/style/styleFor23.css">
+    <link rel="stylesheet" href="style/styleFor23.css">
     <script src="../Qn23/script/forScript23.js"></script>
     <title>Document</title>
 </head>
@@ -12,7 +12,7 @@
         <div class="formSection">
             <form action="component/qn23.cfc?method=formData" method="post" onsubmit="return validate()" enctype="multipart/form-data">
                 <div class="formTopSection">
-                    <img src="../Qn23/assests/logo.png" alt="logo" class="logo">
+                    <img src="../Qn23/assets/logo.png" alt="logo" class="logo">
                 </div>
                 <div class="formBodySection">
                     <div class="divStyle">
@@ -122,7 +122,7 @@
     </div>
     <div class="LastData">
         <p class="fontSize10">Powered By</p>
-        <img src="../Qn23/assests/logoLast.png" alt="logo" class="imageLast">
+        <img src="../Qn23/assets/logoLast.png" alt="logo" class="imageLast">
         <span class="fontSize12">See how easy it is to <a href="#">create a form</span>
     </div>
     <cfif StructKeyExists(form, "submit")>

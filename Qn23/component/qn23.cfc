@@ -18,16 +18,16 @@
         <cffile action="upload" destination="#local.path#" nameConflict="MakeUnique">
         <cfset local.file=cffile.clientFile>
 
-        <cfquery name = "checkData" datasource = "demo">
-            select ID from formData
+        <cfquery name = "checkData">
+            select ID from formDatas
             where email=<cfqueryparam value = "#arguments.email#" CFSQLType = "cf_sql_varchar">
         </cfquery>
 
         <cfif checkData.recordCount>
             <cfdump var="the email id is already exists">
         <cfelse>
-            <cfquery name="insertData" datasource="demo">
-               insert into formData(ApplayPosition,Relocate,DateOFJoining,Profile,Resume,Salary,Name,Email,phone)
+            <cfquery name="insertData">
+               insert into formDatas(ApplayPosition,Relocate,DateOFJoining,Profile,Resume,Salary,Name,Email,phone)
                values(
                     <cfqueryparam value="#arguments.dropDown#" cfsqltype="cf_sql_varchar">,
                     <cfqueryparam value="#arguments.radioButton#" cfsqltype="cf_sql_varchar">,

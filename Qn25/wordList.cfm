@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-        <h3>ADD DATA To DB</h3>
+        <h3>Data Count </h3>
     </div>
     <div>
         <form action="main.cfm" method="post">
@@ -18,13 +18,14 @@
             <input type="submit" vale="ADD" name="submit">
         </form>
     </div>
-    <div>
-        <cfoutput>
+    
+    <cfoutput>
+        <div>
             <cfif StructKeyExists(form, "datas")>
                 <cfset local.demo=createObject("component","component/tagCloud")>
-                    #local.demo.inserting(form.datas)#
+                    #local.demo.countWord(form.datas)#
             </cfif>
-        </cfoutput>
-    </div>
+        </div>
+    </cfoutput>
 </body>
 </html>
