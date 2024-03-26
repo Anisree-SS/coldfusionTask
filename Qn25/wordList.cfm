@@ -11,7 +11,7 @@
         <h3>Data Count </h3>
     </div>
     <div>
-        <form action="main.cfm" method="post">
+        <form action="wordList.cfm" method="post">
             <label>Enter Data : </label>
             <textarea name="datas"></textarea><br>
             <br>
