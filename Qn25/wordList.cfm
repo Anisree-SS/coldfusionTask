@@ -23,7 +23,14 @@
         <div>
             <cfif StructKeyExists(form, "datas")>
                 <cfset local.demo=createObject("component","component/tagCloud")>
-                    #local.demo.countWord(form.datas)#
+                    <cfset keyandvalue=local.demo.countWord(form.datas)>
+                    <cfif arrayLen(keyandvalue)>
+                        <ul>
+                            <cfloop array="#keyandvalue#" index="word">
+                                #word[2]#  (#word[1]#)<br>
+                            </cfloop>
+                        </ul>
+                    </cfif>
             </cfif>
         </div>
     </cfoutput>
