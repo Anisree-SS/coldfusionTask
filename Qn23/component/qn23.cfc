@@ -19,7 +19,7 @@
         <cfset local.file=cffile.clientFile>
 
         <cfquery name = "checkData">
-            select ID from formDatas
+            select ID from formData
             where email=<cfqueryparam value = "#arguments.email#" CFSQLType = "cf_sql_varchar">
         </cfquery>
 
@@ -27,7 +27,7 @@
             <cfdump var="the email id is already exists">
         <cfelse>
             <cfquery name="insertData">
-               insert into formDatas(ApplayPosition,Relocate,DateOFJoining,Profile,Resume,Salary,Name,Email,phone)
+               insert into formData(ApplayPosition,Relocate,DateOFJoining,Profile,Resume,Salary,Name,Email,phone)
                values(
                     <cfqueryparam value="#arguments.dropDown#" cfsqltype="cf_sql_varchar">,
                     <cfqueryparam value="#arguments.radioButton#" cfsqltype="cf_sql_varchar">,

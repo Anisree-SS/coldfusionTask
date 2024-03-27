@@ -145,9 +145,11 @@ function validate(){
 function find() 
 {
 		 var x = document.getElementById("displayError");
+        
 		 if (x.style.display ==="none") 
 		{
     			x.style.display = "block";
+            
  		 } 
 		else 
 		{

@@ -1,6 +1,9 @@
 <cfcomponent>
     <cffunction name="inserting" access="public" type="any">
         <cfargument name="datas">
+            <cfquery>
+                delete from ItemTable
+            </cfquery>
             <cfif len(trim(arguments.datas))>
                 <cfset words = listToArray(arguments.datas," ")>
                     <cfloop array="#words#" index="word">
@@ -38,16 +41,15 @@
             </cfif>
         </cfloop>
         <cfset sortedData = structSort(wordCounts, "numeric", "desc")>
-        <cfdump var="#sortedData#">
        
-
         <cfset sortedWords=[]>
         <cfloop array="#sortedData#" index="word">
             <cfset arrayAppend(sortedWords,[wordCounts[word],word])>
         </cfloop>
-        <cfdump var="#sortedWords#">
 
-
+        <cfquery>
+            delete from ItemTable
+        </cfquery>
         <cfloop array="#sortedWords#" index="word">
             <cfquery name="insertWord" result="insertdata">
                 INSERT INTO ItemTable(word) 
@@ -55,30 +57,20 @@
             </cfquery>
         </cfloop>
 
-        <cfquery name="forDisplay" result="display">
+        <cfquery name="forDisplay"  result="display">
             SELECT * FROM ItemTable 
             ORDER BY len(word) desc
         </cfquery>
-        <cfdump var="#forDisplay#">
-        
-
+      
         <cfset sample=[]>
-        
         <cfloop query="#forDisplay#">
-            <cfset arrayAppend(sample,[structFind(wordCounts,word),word])>
+            <cfset session.mystruct[#word#] = structFind(wordCounts,#word#)>
         </cfloop>
-        <cfset values=serializeJSON((sample),"struct")>
-        <cfif IsJson(values)>
-            <cfdump var="its struct">
-        <cfelse>
-            <cfdump var="its not struct">
-        </cfif>
+        <cfset data=structSort(session.mystruct,"numeric", "desc")>
 
-    <cfdump var="#sample#">
-    <cfdump var="#values#">
-       
-
-
-
+        <cfloop array="#data#" index="word">
+            <cfset arrayAppend(sample,[wordCounts[word],word])>
+        </cfloop>
+        <cfreturn "#sample#">
     </cffunction>
 </cfcomponent>
