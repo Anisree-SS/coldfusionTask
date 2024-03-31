@@ -8,23 +8,31 @@
 </head>
 <body>
     <div>
-        <h3>ADD DATA To DB</h3>
+        <h3>Data in Color </h3>
     </div>
     <div>
-        <form action="main.cfm" method="post">
+        <form action="wordListColor.cfm" method="post">
             <label>Enter Data : </label>
             <textarea name="datas"></textarea><br>
             <br>
             <input type="submit" vale="ADD" name="submit">
         </form>
     </div>
-    <div>
-        <cfoutput>
+    
+    <cfoutput>
+        <div>
             <cfif StructKeyExists(form, "datas")>
                 <cfset local.demo=createObject("component","component/tagCloud")>
-                    #local.demo.inserting(form.datas)#
+                    <cfset keyandvalue=local.demo.forColor(form.datas)>
+                    <cfif arrayLen(keyandvalue)>
+                        <ul>
+                             <cfloop array="#keyandvalue#" index="wordStruct">
+                                <p style="font-size:#wordStruct.fontSize#px; color:#wordStruct.color#;">#wordStruct.word[2]#   (#wordStruct.word[1]#)</p>
+                            </cfloop>
+                        </ul>
+                    </cfif>
             </cfif>
-        </cfoutput>
-    </div>
+        </div>
+    </cfoutput>
 </body>
 </html>

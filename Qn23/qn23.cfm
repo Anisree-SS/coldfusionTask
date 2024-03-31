@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/styleFor23.css">
+
+    <script src="./script/jquery.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="./script/phone.js"></script>
     <script src="../Qn23/script/forScript23.js"></script>
+
+    <link rel="stylesheet" href="style/styleFor23.css">
     <title>Document</title>
 </head>
 <body>
@@ -42,11 +49,24 @@
                         <div class="redioStyle" ><input type="radio" name="radioButton" value="Yes" checked="checked">Yes</div>
                         <div class="redioStyle" ><input type="radio" name="radioButton" value="No">No</div>
                     </div>
-                    <div class="divStyle" id="dateErrorDiv" class="errorDivClr">
+                    <div class="divStyle" id="dateErrorDiv" class="errorDivClr calender" id="cal">
                         <p class="spanStyle" class="error" id="errorDate">When can you start?<span class="clrRed">*</span></p>
-                        <div class="dateData">
-                            <input type="date" id="day" name="day" maxlength="2" class="forDate">
-                        </div>
+                            <div class="calInput dateContainer" >
+                                <div class="inputs">
+                                    <input type="text" class="field text dateInputOne" id="inputFieldTwo" maxlength="2" name="month">
+                                    <p>MM</p>
+                                </div>
+                                <p>/</p>
+                                <div class="inputs">
+                                    <input type="text" class="field text dateInputOne" id="day" maxlength="2" name="day">
+                                    <p>DD</p>
+                                </div>
+                                <p>/</p>
+                                <div class="inputs inputss">
+                                    <input type="text"  class="field text dateInputTwo" id="datepicker" maxlength="4" name="year">
+                                    <p>YYYY</p>
+                                </div>
+                            </div>          
                         <p id="forDate" class="errorStyle"></P>
                     </div>
                     <div class="divStyle" id="profileErrorDiv" class="errorDivClr">
@@ -103,13 +123,25 @@
                     </div>
                     <div class="divStyle" id="phoneErrorDiv" class="errorDivClr">
                         <p class="spanStyle" class="error" id="errorPhone">Phone<span class="clrRed">*</span></p>
-                        <div>
-                            <div class="divRowFlex">
-                                <input type="text"  maxlength="10" class="forDate" id="phone" name="phone">
-                            </div>
+                        <div class="phoneInput">
+                        <div class="inputsValues">
+                            <input type="text" id="n0" class="authInput" maxlength="3"   data-next="1" name="partOne">
+                            <p>###</p>
                         </div>
+                        <p>-</p>
+                        <div class="inputsValues">
+                            <input type="text" id="n1" class="authInput" maxlength="3"  data-next="2" name="partTwo">
+                            <p>###</p>
+                        </div>
+                        <p>-</p>
+                        <div class="inputsValues inputssValues">
+                            <input type="text" id="n2" class="authInput" maxlength="4"  data-next="3" name="partThree">  
+                            <p>####</p>
+                        </div>
+                    </div>
                         <p id="forPhone" class="errorStyle"></p>
                     </div>
+
                     <div>
                         <input type="submit" value="Submit" name="submit" class="buttonStyle">
                     </div>
@@ -125,8 +157,6 @@
         <img src="../Qn23/assets/logoLast.png" alt="logo" class="imageLast">
         <span class="fontSize12">See how easy it is to <a href="#">create a form</span>
     </div>
-    <cfif StructKeyExists(form, "submit")>
 
-    </cfif>
 </body>
 </html>
