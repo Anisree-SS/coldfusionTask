@@ -17,10 +17,12 @@ function validate(){
             positionErrorDiv.classList.remove("errorDivClr");
             find();
         }
-    var day=document.getElementById("day").value;
+    var month=document.getElementById("inputFieldTwo").value.trim();
+    var day=document.getElementById("day").value.trim();
+    var year=document.getElementById("datepicker").value.trim();
     var errorDate=document.getElementById("errorDate");
     var dateErrorDiv=document.getElementById("dateErrorDiv");
-        if((day==="")){
+        if((day==="")|| (month==="")||(year==="")){
             document.getElementById("forDate").innerHTML="This field is required.Please enter a value.";
             errorDate.classList.add("error");
             dateErrorDiv.classList.add("errorDivClr");
@@ -108,18 +110,20 @@ function validate(){
             find();
         }
    
-    var phone=document.getElementById("phone").value.trim();
+    var partOne=document.getElementById("n0").value.trim();
+    var partTwo=document.getElementById("n1").value.trim();
+    var partThree=document.getElementById("n2").value.trim();
     var errorPhone=document.getElementById("errorPhone");
     var phoneErrorDiv=document.getElementById("phoneErrorDiv");
 
-        if((phone==="")){
+        if((partOne==="")||(partTwo==="")||(partThree==="")){
             document.getElementById("forPhone").innerHTML="This field is required. Please enter a value.";
             errorPhone.classList.add("error");
             phoneErrorDiv.classList.add("errorDivClr");
             count++;
             find();
         }
-        else if(isNaN(phone)){
+        else if(isNaN(partOne)||isNaN(partTwo)||isNaN(partThree)){
             document.getElementById("forPhone").innerHTML="Invalid phone Number";
             errorPhone.classList.add("error");
             phoneErrorDiv.classList.add("errorDivClr");

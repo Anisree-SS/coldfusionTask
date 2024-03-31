@@ -179,6 +179,76 @@ hr{
     align-items: center;
 }
 
+.calender{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 403.89px;
+    padding: 5px 20px;
+    font-size: 12.35px;
+    font-weight: 700;
+}
+.calInput{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 3px;
+}
+
+.inputs input{
+    width:19px;
+    height: 26px !important;
+    text-align: center;
+    border: 1px solid #bbbfbf;
+    font-size: 11.05px;
+}
+
+.inputss input{
+    width:35px;
+    border: 1px solid #bbbfbf;
+    text-align: center;
+    font-size: 11.05px;
+    margin-right: 5px;
+}
+.inputs{
+    font-size: 11.05px;
+    font-weight: 100;
+}
+
+.phone{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 403.89px;
+    font-size: 12.35px;
+    font-weight: 700;
+}
+.phoneInput{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 3px;
+}
+.inputsValues input{
+    width:27px;
+    height: 26px !important;
+    text-align: center;
+    border: 1px solid #bbbfbf;
+    font-size: 11.05px;
+}
+.inputssValues input{
+    width:35px;
+    border: 1px solid #bbbfbf;
+    text-align: center;
+    font-size: 11.05px;
+}
+.inputsValues{
+    font-size: 11.05px;
+    font-weight: 100;
+}
+
 #displayError{
     display: none;
     border: 1px solid red;
