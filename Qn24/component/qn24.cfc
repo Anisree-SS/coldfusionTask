@@ -20,14 +20,15 @@
     <cffunction name="uploadMail" access="public">
         <cfargument name="name" required="true">
         <cfargument name="email" required="true">
-            <cfquery name="insertData" datasource="demo">
-                INSERT INTO mailList (Name,Gmail)
-                VALUES (
-                    <cfqueryparam value="#arguments.name#" cfsqltype="CF_SQL_VARCHAR">,
-                    <cfqueryparam value="#arguments.email#" cfsqltype="CF_SQL_VARCHAR">
-                )
-            </cfquery>
-            <cfreturn "email uploaded successfully">
+        
+        <cfquery name="insertData" datasource="demo">
+            INSERT INTO mailList (Name,Gmail)
+            VALUES (
+                <cfqueryparam value="#arguments.name#" cfsqltype="CF_SQL_VARCHAR">,
+                <cfqueryparam value="#arguments.email#" cfsqltype="CF_SQL_VARCHAR">
+            )
+        </cfquery>
+        <cfreturn "email uploaded successfully">
     </cffunction>
 
 </cfcomponent>

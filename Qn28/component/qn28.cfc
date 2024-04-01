@@ -10,19 +10,22 @@
                 where userName=<cfqueryparam value="#arguments.userName#" cfsqltype="cf_sql_varchar">
                 AND password=<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar"> 
             </cfquery>
+
             <cfset local.id = checkLogin.userId>
             <cfif checkLogin.recordCount>
                 <cfquery name="checkRole">
                     select role from loginTable
                     where userId=<cfqueryparam value="#local.id#" cfsqltype="cf_sql_integer">
                 </cfquery>
-                        <cfif checkRole.role EQ "admin" || checkRole.role EQ "editor">
-                            <cflocation url="adminPage.cfm">
-                        <cfelseif checkRole.role EQ "user">
-                            <cflocation url="userPage.cfm">
-                        <cfelse>
-                            <cfoutput>unknown role</cfoutput>
-                        </cfif>
+
+                <cfif checkRole.role EQ "admin" || checkRole.role EQ "editor">
+                    <cflocation url="adminPage.cfm">
+                    <cfelseif checkRole.role EQ "user">
+                        <cflocation url="userPage.cfm">
+                    <cfelse>
+                        <cfoutput>unknown role</cfoutput>
+                </cfif>
+
                 <cfelse>
                     <cfoutput>invalid</cfoutput>
             </cfif>

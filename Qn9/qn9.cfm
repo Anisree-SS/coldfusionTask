@@ -18,11 +18,11 @@
     </div>
     <div>
         <cfif StructKeyExists(form,"key")>
-            <cfinvoke component = "component/qn9" method ="printStruct" returnVariable = "keyValue">
+            <cfinvoke component = "component/qn9" method ="printStruct">
                 <cfinvokeargument name="key" value="#form.key#">
                 <cfinvokeargument name="value" value="#form.value#">
             </cfinvoke>
-            <cfdump var ="#keyValue#">
+            <cfdump var ="#session.structSecond#">
         </cfif>  
     </div>
 </body>

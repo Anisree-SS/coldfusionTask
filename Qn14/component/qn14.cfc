@@ -11,9 +11,7 @@
         <cfquery name="imageList" result="imageResult">
             insert into imageList(imgName,imgDes,imgFile)values('#arguments.imgName#','#arguments.imgDesc#','#local.image#')
         </cfquery>
-
         <cfset local.id = imageResult.generatedKey>
-    
         <cflocation url="imageList.cfm?imgId=#local.id#">
     </cffunction>
 

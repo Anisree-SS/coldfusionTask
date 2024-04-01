@@ -21,7 +21,11 @@
                 <cfinvokeargument name="numbers" value="#form.numbers#">
             </cfinvoke>
         </cfif>
-        <cfdump var="#values#">
+        <cfoutput>
+            <cfloop array="#values#" index="value">
+                #value#,
+            </cfloop>
+        </cfoutput>
     </div>
 </body>
 </html>

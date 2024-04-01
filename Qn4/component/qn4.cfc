@@ -1,42 +1,43 @@
 <cfcomponent>
     <cffunction name="show" access="public">
-        <cfset today=DateFormat(now(),"dd-mmm-yyyy")>
-        <cfset lastDay=DaysInMonth(today)&"/"&DateFormat(now(),"mm/yyyy")>
-        <cfset days=Dayofweek(lastDay)>
+        <cfset result={}>
 
+        <cfset result.today=DateFormat(now(),"dd-mmm-yyyy")>
+        <cfset result.lastDay=DaysInMonth(result.today)&"/"&DateFormat(now(),"mm/yyyy")>
+        <cfset result.monthNumeric=DateFormat(now(),"mm")>
+        <cfset result.monthInWord=DateFormat(now(),"mmmm")>
+
+        <cfset days=Dayofweek(result.lastDay)>
         <cfswitch expression=#days#>
-            <cfcase value=1> <cfset dayIs = "sunday"> </cfcase>
-            <cfcase value=2> <cfset dayIs = "mon"> </cfcase>
-            <cfcase value=3> <cfset dayIs = "tue"> </cfcase>
-            <cfcase value=4> <cfset dayIs = "wed"> </cfcase>
-            <cfcase value=5> <cfset dayIs = "thur"> </cfcase>
-            <cfcase value=6> <cfset dayIs = "fri"> </cfcase>
-            <cfcase value=7> <cfset dayIs = "sat"> </cfcase>
+            <cfcase value=1> <cfset result.dayIs = "Sunday"> </cfcase>
+            <cfcase value=2> <cfset result.dayIs = "Monday"> </cfcase>
+            <cfcase value=3> <cfset result.dayIs = "Tuesday"> </cfcase>
+            <cfcase value=4> <cfset result.dayIs = "Wednesday"> </cfcase>
+            <cfcase value=5> <cfset result.dayIs = "Thursday"> </cfcase>
+            <cfcase value=6> <cfset result.dayIs = "Friday"> </cfcase>
+            <cfcase value=7> <cfset result.dayIs = "Saturday"> </cfcase>
         </cfswitch>
         
-        <cfset friday=6>
-        <cfloop index="i" from="#DaysInMonth(today)#" to="1" step="-1">
-            <cfset dayTOFind=i&"/"&DateFormat(now(),"mmm/yyyy")>
-            <cfif Dayofweek(dayTOFind) Eq friday>
-                <cfset lastFri="#dayTOFind#">
+        <cfset result.lastDayInMonth=DaysInMonth(result.today)&"-"&DateFormat(now(),"mmm")&"-"&DateFormat(now(),"yyyy")&result.dayIs>
+
+        <cfloop index="i" from="#DaysInMonth(result.today)#" to="1" step="-1">
+            <cfset local.dayTOFind=i&"/"&DateFormat(now(),"mmm/yyyy")>
+            <cfif Dayofweek(local.dayTOFind) Eq 6>
+                <cfset result.lastFriday="#local.dayTOFind#">
                 <cfbreak>
             </cfif>
         </cfloop>
-        <cfset count = 0>
-        <cfset arr=[]>
-        
-        <cfoutput>
-            <br>
-            <span>Today : #today# </span><br>
-            <span>Current month numeric: #DateFormat(now(),"mm")#</span> <br>
-            <span>Current month in word : #DateFormat(now(),"mmmm")# </span><br>
-            <span>Days in a month : #DaysInMonth(today)#-#DateFormat(now(),"mmm")#-#DateFormat(now(),"yyyy")#  #dayIs#</span><br>
-            <span>Last friday is : #lastFri#</span><br>
-            <!---loop to print last 5 days--->
-            <cfloop index="i" from="#DaysInMonth(today)#" to="15" step="-1">
-            <cfset dayTofind=i&"-"&DateFormat(now(),"mmm-yyyy")>
-            <cfset weekNo=Dayofweek(dayTofind)>
-            <cfswitch expression=#weekNo#>
+        <cfreturn result>
+    </cffunction>
+
+
+    <cffunction name="lastDays" access="public">
+        <cfset local.count = 0>
+        <cfset local.colorData=[]>
+        <cfloop index="i" from="#DaysInMonth(DateFormat(now(),"dd-mmm-yyyy"))#" to="15" step="-1">
+            <cfset local.dayTofind=i&"-"&DateFormat(now(),"mmm-yyyy")>
+            <cfset local.weekNo=Dayofweek(local.dayTofind)>
+            <cfswitch expression=#local.weekNo#>
                 <cfcase value=1>
                     <cfset colors="##ff0000">
                     <cfset day="Sunday">
@@ -44,7 +45,6 @@
                 <cfcase value=2>
                     <cfset colors="##008000">
                     <cfset day="Monday"> 
-">
                 </cfcase>
                 <cfcase value=3>
                     <cfset colors="##ffa500">
@@ -67,23 +67,16 @@
                     <cfset day="Saturday">
                 </cfcase>
             </cfswitch>
-            <cfset count+=1>
-            <cfif weekNo eq 5 OR weekNo Eq 7>
-                <b>
-                    <FONT COLOR="#colors#">
-                        #dayTofind# - #day#
-                    </FONT>
-                </b>
+            <cfset local.count+=1>
+            <cfif local.weekNo eq 5 OR local.weekNo Eq 7>
+                <cfset arrayAppend(local.colorData, {date =local.dayTofind, day=day, fontWeight="bold", color = colors})>
             <cfelse>
-                <FONT COLOR="#colors#">
-                    #dayTofind# - #day#
-                </FONT>
+                <cfset arrayAppend(local.colorData, {date = local.dayTofind, day=day, fontWeight="normal", color = colors})>
             </cfif>
-            <cfif count Eq 6>
+            <cfif local.count Eq 6>
                 <cfbreak>
             </cfif>
         </cfloop>
-
-        </cfoutput>
+        <cfreturn local.colorData>
     </cffunction>
 </cfcomponent>

@@ -17,7 +17,7 @@
         <cfif StructKeyExists(form,"number")>
             <cfset local.object = createObject("component","component/qn12")>
             <cfset alldatas=#local.object.findName()#>
-            <cfset firstNmae=#local.object.getFirstName(form.number)#>
+            <cfset firstName=#local.object.getFirstName(form.number)#>
             <cfoutput>
                 <div>
                     <table>
@@ -30,7 +30,9 @@
                     </table>
                 </div>
                 <div>
-                    <cfdump var = "#firstNmae#">
+                    <cfoutput>
+                        #firstName.fname#
+                    </cfoutput>
                 </div>
             </cfoutput>
         </cfif>

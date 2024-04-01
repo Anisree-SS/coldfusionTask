@@ -1,6 +1,7 @@
 <cfcomponent>
     <cffunction name="printStruct" access="public">
-        <cfset session.structFirst["#arguments.key#"] = "#arguments.value#">	
-		<cfreturn session.structFirst>
+        <cfargument name="key" required="true">
+        <cfargument name="value" required="true">
+        <cfset session.structFirst[arguments.key] = arguments.value>
     </cffunction>
 </cfcomponent>
