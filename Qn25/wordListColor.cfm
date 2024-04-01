@@ -26,7 +26,7 @@
                     <cfset keyandvalue=local.demo.forColor(form.datas)>
                     <cfif arrayLen(keyandvalue)>
                         <ul>
-                             <cfloop array="#keyandvalue#" index="wordStruct">
+                            <cfloop array="#keyandvalue#" index="wordStruct">
                                 <p style="font-size:#wordStruct.fontSize#px; color:#wordStruct.color#;">#wordStruct.word[2]#   (#wordStruct.word[1]#)</p>
                             </cfloop>
                         </ul>

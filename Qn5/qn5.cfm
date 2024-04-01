@@ -19,15 +19,15 @@
         </form>
     </div>
     <div>
-        <cfif structKeyExists(form,"user")>
-            <cfset local.object=createObject("component","component/qn5")>
-        </cfif>
         <cfoutput>
-            <br>
-            <span>User age : #local.object.userAge(form.user)#</spanp><br>
-            <span>Age user's mother delivered user : #local.object.motherAge(form.user,form.mother)#</span><br>
-            <span>Days remaining for user's bday : #local.object.remainingDays(form.user)#</span><br>
-            <span>Days remaining for mother's bday : #local.object.remainingDays(form.mother)#</span>
+            <cfif structKeyExists(form,"user")>
+                <cfset local.object=createObject("component","component/qn5")>
+                <br>
+                <span>User age : #local.object.userAge(form.user)#</spanp><br>
+                <span>Age user's mother delivered user : #local.object.motherAge(form.user,form.mother)#</span><br>
+                <span>Days remaining for user's bday : #local.object.remainingDays(form.user)#</span><br>
+                <span>Days remaining for mother's bday : #local.object.remainingDays(form.mother)#</span>
+            </cfif>
         </cfoutput>
     </div>
 </body>

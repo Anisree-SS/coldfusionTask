@@ -1,19 +1,17 @@
 <cfcomponent>
     <cffunction name="display" access="public">
         <cfargument name="limit" required="true">
+        <cfset local.numbers=[]>
         <cfoutput>
             <cfloop index="i" from="1" to="#arguments.limit#">
                 <cfif i%2 EQ 0>
-                    <FONT COLOR="##008000">
-                        #i#, 
-                    </FONT>
+                    <cfset arrayAppend(local.numbers, {number=i , color ="blue"})>
                 <cfelse>
-                    <FONT COLOR="##0000ff">
-                       #i#, 
-                    </FONT>
+                    <cfset arrayAppend(local.numbers, {number=i , color ="green"})>
                 </cfif>
             </cfloop>
         </cfoutput> 
+        <cfreturn local.numbers>
     </cffunction>
 </cfcomponent>
 

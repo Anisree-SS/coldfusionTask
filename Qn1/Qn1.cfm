@@ -17,18 +17,12 @@
         </form>
    </div>
    <div>
-        <!---<cfif StructKeyExists(form, "number")>
-            <cfinvoke component="component/qn1" method="show" returnvariable="value">
-                <cfinvokeargument name="number" value="#form.number#">              
-            </cfinvoke>
-        </cfif>--->
         <cfif structKeyExists(form,"num")>
-            <cfset demoObj = createObject("component","components/qn1")>
+            <cfset local.demoObj = createObject("component","components/qn1")>
             <cfoutput>
-                <p>#demoObj.show(form.num)#</p>
+                <p>#local.demoObj.show(form.num)#</p>
             </cfoutput>
-        </cfif>
-        
+        </cfif>   
    </div>
 </body>
 </html>

@@ -132,7 +132,7 @@
             <cfset Green = randRange(0, 255)>
             <cfset Blue = randRange(0, 255)>
             <cfset Color = "##"&formatBaseN(Red, '16')&formatBaseN(Green, '16')&formatBaseN(Blue, '16')>
-            <cfset fontSize = minFontSize + (word[1]*2)>
+            <cfset fontSize = minFontSize + (word[1]*1)>
             <cfset arrayAppend(colorData, {word = word, fontSize = fontSize, color = Color})>
         </cfloop>
     
