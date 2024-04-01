@@ -77,7 +77,7 @@
 
     <!--- 3rd Qn 25 --->
    
-   <cffunction name="forColor" access="public">
+    <cffunction name="forColor" access="public">
         <cfargument name="datas" required="true">
         <cfset wordCounts = {}>
         <cfset words = reMatch("[a-zA-Z]+", arguments.datas)>
@@ -132,7 +132,7 @@
             <cfset Green = randRange(0, 255)>
             <cfset Blue = randRange(0, 255)>
             <cfset Color = "##"&formatBaseN(Red, '16')&formatBaseN(Green, '16')&formatBaseN(Blue, '16')>
-            <cfset fontSize = minFontSize + (word[1]*5)>
+            <cfset fontSize = minFontSize + (word[1]*2)>
             <cfset arrayAppend(colorData, {word = word, fontSize = fontSize, color = Color})>
         </cfloop>
     
