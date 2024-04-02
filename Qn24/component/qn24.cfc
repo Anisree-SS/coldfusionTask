@@ -1,7 +1,6 @@
 <cfcomponent>
-
     <!--- checking mail --->
-    <cffunction name="checkMail" access="remote">
+    <cffunction name="checkMail" access="remote" returnformat="json">
         <cfargument name="name" required="true">
         <cfargument name="email" required="true">
 
@@ -10,9 +9,9 @@
             WHERE Gmail = <cfqueryparam value="#arguments.email#" cfsqltype="CF_SQL_VARCHAR">
         </cfquery>
         <cfif checkEmail.recordCount>
-            <cfoutput>{"message":"exists"}</cfoutput>
+            <cfreturn {"message":"exists"}>
         <cfelse>
-            <cfoutput>{"message":"notexists"}</cfoutput>
+            <cfreturn {"message":"notexists"}>
         </cfif>   
     </cffunction>
     
@@ -30,5 +29,4 @@
         </cfquery>
         <cfreturn "email uploaded successfully">
     </cffunction>
-
 </cfcomponent>

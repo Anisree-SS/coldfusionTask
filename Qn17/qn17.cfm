@@ -20,11 +20,9 @@
             <cfif StructKeyExists(form, "limit")>
                 <cfset local.displayNum=CreateObject("component","component/qn17")>
                 <cfset local.numbers=local.displayNum.display(form.limit)>
-                <cfif arrayLen(local.numbers)>
-                    <cfloop array="#local.numbers#" index="num">
-                        <span style="color:#num.color#;">#num.number#</span>,
-                    </cfloop>
-                </cfif>
+                <cfloop array="#local.numbers#" index="num">
+                    <span style="color:#num.color#;">#num.number#</span>,
+                </cfloop>
             </cfif> 
         </cfoutput>       
     </div>

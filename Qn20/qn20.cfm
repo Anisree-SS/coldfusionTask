@@ -24,7 +24,7 @@
         <cfif StructKeyExists(form, "captcha")>
             <cfset local.Object=createObject("component","component/qn20")>
             <cfoutput>
-                <p>#local.Object.subscribe(form.captcha,session.captchaText)#</p>
+                <p>#local.Object.subscribe(form.captcha)#</p>
             </cfoutput>
         </cfif>
     </div>

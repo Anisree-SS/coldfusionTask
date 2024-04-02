@@ -8,6 +8,25 @@
 </head>
 <body>
     <div>
+        <cfif StructKeyExists(form, "submit")>
+            <cfoutput>
+                <cfinvoke component = "component/qn21" method ="send" returnVariable = "msg">
+                    <cfsavecontent variable="message">
+                        dear #form.name#,
+                        Happy bday 
+                        #form.wishes#
+                    </cfsavecontent>
+                    <cfdump var = "#message#">
+                    <cfinvokeargument name="name" value="#form.name#">
+                    <cfinvokeargument name="email" value="#form.email#">
+                    <cfinvokeargument name="message" value="#message#">
+                    <cfinvokeargument name="greeting" value="#form.greeting#">
+                </cfinvoke>
+               #msg#
+            </cfoutput>
+        </cfif>
+    </div>
+    <div>
         <form action="qn21.cfm" method="post" enctype="multipart/form-data">
             <label>Birthday Baby Name</label>
             <input type="text" name="name"><br>
@@ -19,19 +38,6 @@
             <input type="file" name="greeting" accept=".jpg, .jpeg, .png, .gif"><br>
             <input type="submit" value="send" name="submit">
         </form>
-    </div>
-    <div>
-        <cfif StructKeyExists(form, "greeting")>
-            <cfinvoke component = "component/qn21" method = "send" returnVariable = "msg">
-                <cfinvokeargument name="name" value="#form.name#">
-                <cfinvokeargument name="email" value="#form.email#">
-                <cfinvokeargument name="wishes" value="#form.wishes#">
-                <cfinvokeargument name="greeting" value="#form.greeting#">
-            </cfinvoke>
-            <cfoutput>
-               #msg#
-            </cfoutput>
-        </cfif>
     </div>
 </body>
 </html>

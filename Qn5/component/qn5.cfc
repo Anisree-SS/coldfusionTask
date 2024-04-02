@@ -24,9 +24,9 @@
         <cfset local.nextBirthday=CreateDate(DateFormat(now(),"yyyy"),DateFormat(arguments.dob,"mm"),DateFormat(arguments.dob,"dd"))>
         <cfif currentDate lt nextBirthday>
             <cfset local.remaining=DateDiff("d",local.currentDate,local.nextBirthday)>
-        <cfelse>
-            <cfset nextBirthday = DateAdd("yyyy", 1, nextBirthday)>
-            <cfset local.remaining=DateDiff("d",local.currentDate,local.nextBirthday)>
+            <cfelse>
+                <cfset nextBirthday = DateAdd("yyyy", 1, nextBirthday)>
+                <cfset local.remaining=DateDiff("d",local.currentDate,local.nextBirthday)>
         </cfif>
         <cfreturn local.remaining>
     </cffunction>

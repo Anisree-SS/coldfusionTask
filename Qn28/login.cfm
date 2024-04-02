@@ -23,6 +23,7 @@
                     <cfinvokeargument name="userName" value="#form.userName#">
                     <cfinvokeargument name="password" value="#form.password#">
                 </cfinvoke>
+                #loginMsg#
             </cfif>
         </cfoutput>
     </div>

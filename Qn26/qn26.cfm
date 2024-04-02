@@ -18,7 +18,7 @@
             <cfif StructKeyExists(form, "textFile")>
                 <cfset local.object=createObject("component","component/qn26")>
                 <cfoutput>
-                    word count in the file is #local.object.countWord(form.textFile)#
+                    #local.object.countWord(form.textFile)#
                 </cfoutput>
             </cfif>
         </div>

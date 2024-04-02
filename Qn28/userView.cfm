@@ -11,12 +11,12 @@
             <cfset local.idPage=URL.idPage>
             <cfset local.demo=createObject("component","component/qn28")>
             <cfset local.display=#local.demo.viewData(local.idPage)#>
-            <cfloop query="#local.dis#">
+            <cfloop query="#local.display#">
             <div>
-                <h3>#local.display.pageName#</h3>
+                <h3>#pageName#</h3>
             </div>
             <div>
-                <p>#local.display.pageDes#</p>
+                <p>#pageDes#</p>
             </div>    
             </cfloop>      
         <button type="button"><a href="userPage.cfm">Back</a></button>
