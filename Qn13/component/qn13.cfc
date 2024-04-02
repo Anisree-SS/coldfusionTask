@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction name="local.countWord" access="public">
+    <cffunction name="countWord" access="public">
         <cfargument name="word" type="string" required="true">
         <cfset local.inputString="the quick brown fox jumps over the lazy dog">
         <cfset local.count = 0>

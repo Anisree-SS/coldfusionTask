@@ -11,8 +11,8 @@
         <div>
             <h5>WELCOME</h5>
         </div>
-        <a href="qn27.cfm">logout</a>
         <cfset session.login=false>
+        <a href="qn27.cfm">logout</a>
     <cfelse>
         <cflocation url ="qn27.cfm">
     </cfif>

@@ -23,12 +23,13 @@
                 </tr>
                 <cfloop query="#local.display#">
                     <tr>
-                        <td>#local.display.pageId#</td>
-                        <td><a href="userView.cfm?idPage=#local.display.pageId#">#local.display.pageName#</a></td>
+                        <td>#pageId#</td>
+                        <td><a href="userView.cfm?idPage=#pageId#">#pageName#</a></td>
                     </tr>           
                 </cfloop>
             </table>
-        <div>
+        </div>
+        <button type="button"><a href="login.cfm">logout</a></button>
     </cfoutput>
 </body>
 </html>

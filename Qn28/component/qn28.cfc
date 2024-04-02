@@ -1,5 +1,4 @@
 <cfcomponent>
-
         <!--- Login --->
         <cffunction name="login" access="public">
             <cfargument name="userName" required="true">
@@ -23,11 +22,10 @@
                     <cfelseif checkRole.role EQ "user">
                         <cflocation url="userPage.cfm">
                     <cfelse>
-                        <cfoutput>unknown role</cfoutput>
+                        <cfreturn "unknown role">
                 </cfif>
-
                 <cfelse>
-                    <cfoutput>invalid</cfoutput>
+                    <cfreturn "invalid">
             </cfif>
         </cffunction>
 
@@ -102,5 +100,4 @@
             </cfquery>
             <cflocation url="../adminPAge.cfm">
         </cffunction>
-
 </cfcomponent>

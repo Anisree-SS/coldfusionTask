@@ -48,7 +48,7 @@
                     <cfqueryparam value="#phone#" cfsqltype="cf_sql_varchar">
                ) 
             </cfquery>
-            <cfdump var="welcome!!!!!!!!">
+            <cflocation url="../welcome.cfm">
         </cfif>
 
     </cffunction>

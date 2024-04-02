@@ -9,7 +9,12 @@
         <cffile action ="upload" destination ="#local.path#" nameConflict ="MakeUnique">
         <cfset local.image = cffile.clientFile>
         <cfquery name="imageList" result="imageResult">
-            insert into imageList(imgName,imgDes,imgFile)values('#arguments.imgName#','#arguments.imgDesc#','#local.image#')
+            insert into imageList(imgName,imgDes,imgFile)
+            values(
+                <cfqueryparam value='#arguments.imgName#' cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value='#arguments.imgDesc#' cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value='#local.image#' cfsqltype="cf_sql_varchar">
+                )
         </cfquery>
         <cfset local.id = imageResult.generatedKey>
         <cflocation url="imageList.cfm?imgId=#local.id#">

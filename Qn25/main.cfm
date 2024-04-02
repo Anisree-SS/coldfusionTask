@@ -22,7 +22,7 @@
         <cfoutput>
             <cfif StructKeyExists(form, "datas")>
                 <cfset local.demo=createObject("component","component/tagCloud")>
-                    #local.demo.inserting(form.datas)#
+                #local.demo.inserting(form.datas)#
             </cfif>
         </cfoutput>
     </div>

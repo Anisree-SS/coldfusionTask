@@ -20,7 +20,8 @@
         <cfif structKeyExists(form,"num")>
             <cfset local.demoObj = createObject("component","components/qn1")>
             <cfoutput>
-                <p>#local.demoObj.show(form.num)#</p>
+                <p>#local.
+                demoObj.show(form.num)#</p>
             </cfoutput>
         </cfif>   
    </div>

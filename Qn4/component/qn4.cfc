@@ -73,7 +73,7 @@
             <cfelse>
                 <cfset arrayAppend(local.colorData, {date = local.dayTofind, day=day, fontWeight="normal", color = colors})>
             </cfif>
-            <cfif local.count Eq 6>
+            <cfif local.count Eq 5>
                 <cfbreak>
             </cfif>
         </cfloop>

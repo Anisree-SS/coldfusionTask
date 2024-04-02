@@ -47,12 +47,12 @@
         <!---cfobject function--->
         <div>
             <h4>cfobject function</h4>
-            <cfset cfobjectFunction=createObject("component","component/qn15")>
+            <cfset local.cfobjectFunction=createObject("component","component/qn15")>
         </div>
         <div>
-            multiply(1,2) = #cfobjectFunction.multiply(1,2)#<br>
-            multiply(1,2,3) = #cfobjectFunction.multiply(1,2,3)#<br>
-            multiply(1,2,3,4) = #cfobjectFunction.multiply(1,2,4)#<br>
+            multiply(1,2) = #local.cfobjectFunction.multiply(1,2)#<br>
+            multiply(1,2,3) = #local.cfobjectFunction.multiply(1,2,3)#<br>
+            multiply(1,2,3,4) = #local.cfobjectFunction.multiply(1,2,4)#<br>
         </div>
     </cfoutput>
 </body>

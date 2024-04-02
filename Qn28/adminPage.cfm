@@ -26,11 +26,11 @@
                 </tr>
                 <cfloop query="#local.display#">
                     <tr>
-                        <td>#local.display.pageId#</td>
-                        <td>#local.display.pageName#</td>
-                        <td>#local.display.pageDes#</td>
+                        <td>#pageId#</td>
+                        <td>#pageName#</td>
+                        <td>#pageDes#</td>
                         <td><a href="editPage.cfm?idPage=#pageId#">Edit</a></td>
-                        <td><a href="component/qn28.cfc?method=deleteRow&idPage=#local.display.pageId#">Delete</a></td>
+                        <td><a href="component/qn28.cfc?method=deleteRow&idPage=#pageId#">Delete</a></td>
                     </tr>     
                 </cfloop>      
             </table>

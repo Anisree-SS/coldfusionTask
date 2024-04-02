@@ -8,8 +8,7 @@
 </head>
 <body>
     <div>
-        <cfset demo=createObject("component","component/qn18")>
-        <cfset data=#demo..getValue()#>
+        <cfset local.demo=createObject("component","component/qn18")>
         <cfoutput>
             <table>
                 <tr>
@@ -17,7 +16,7 @@
                     <th>Name</th>
                     <th>Email</th>
                 </tr>
-                <cfloop query="#data#">
+                <cfloop query="#local.demo.getValue()#">
                     <tr>
                         <td>#ID#</td>
                         <td>#Name#</td>
