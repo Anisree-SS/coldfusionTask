@@ -1,0 +1,21 @@
+*{
+    padding:5px;
+    margin: 0px;
+}
+
+h6{
+    font-size: 12px;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+}
+
+input{
+    
+    margin: 10px;
+}
+
