@@ -104,7 +104,7 @@
         <cfloop array="#local.sortedWords#" index="word">
             <cfquery name="insertWord" result="insertdata">
                 INSERT INTO ItemTable(word) 
-                VALUES (<cfqueryparam value="#word[2]#">)
+                VALUES (<cfqueryparam value="#word[2]#" cfsqltype="cf_sql_varchar">)
             </cfquery>
         </cfloop>
 
