@@ -20,12 +20,12 @@
             <cfinvoke component = "component/qn3" method = "show" returnVariable = "values">
                 <cfinvokeargument name="numbers" value="#form.numbers#">
             </cfinvoke>
+            <cfoutput>
+                <cfloop array="#values#" index="value">
+                    #value#,
+                </cfloop>
+            </cfoutput>
         </cfif>
-        <cfoutput>
-            <cfloop array="#values#" index="value">
-                #value#,
-            </cfloop>
-        </cfoutput>
     </div>
 </body>
 </html>
