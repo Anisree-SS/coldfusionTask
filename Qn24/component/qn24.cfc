@@ -1,7 +1,6 @@
 <cfcomponent>
     <!--- checking mail --->
     <cffunction name="checkMail" access="remote" returnformat="json">
-        <cfargument name="name" required="true">
         <cfargument name="email" required="true">
 
         <cfquery name="checkEmail" datasource="demo">
@@ -16,7 +15,7 @@
     </cffunction>
     
     <!--- uploading to db --->
-    <cffunction name="uploadMail" access="public">
+    <cffunction name="uploadMail" access="remote" returnformat="json">
         <cfargument name="name" required="true">
         <cfargument name="email" required="true">
         
@@ -27,6 +26,6 @@
                 <cfqueryparam value="#arguments.email#" cfsqltype="CF_SQL_VARCHAR">
             )
         </cfquery>
-        <cfreturn "email uploaded successfully">
+        <cfreturn {"message":"uploaded"}>
     </cffunction>
 </cfcomponent>
