@@ -20,36 +20,25 @@
         <cfset userName=arguments.Fname&" "&arguments.Lname>
         <cfset relocateDate=CreateDate("#arguments.year#","#arguments.month#","#arguments.day#")>
         <cfset phone=arguments.partOne&arguments.partTwo&arguments.partThree>
-        
     
         <cfset local.path = ExpandPath("../assets/")>
         <cffile action="upload" destination="#local.path#" nameConflict="MakeUnique">
         <cfset local.file=cffile.clientFile>
 
-        <cfquery name = "checkData">
-            select ID from formData
-            where email=<cfqueryparam value = "#arguments.email#" CFSQLType = "cf_sql_varchar">
+        <cfquery name="insertData">
+            insert into formData(ApplayPosition,Relocate,DateOFJoining,Profile,Resume,Salary,Name,Email,phone)
+            values(
+                <cfqueryparam value="#arguments.dropDown#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#arguments.radioButton#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#relocateDate#" cfsqltype="CF_SQL_DATE">,
+                <cfqueryparam value="#arguments.profile#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#local.file#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#salary#" cfsqltype="cf_sql_float">,
+                <cfqueryparam value="#userName#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#arguments.email#" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#phone#" cfsqltype="cf_sql_varchar">
+            ) 
         </cfquery>
-
-        <cfif checkData.recordCount>
-            <cfdump var="the email id is already exists">
-        <cfelse>
-            <cfquery name="insertData">
-               insert into formData(ApplayPosition,Relocate,DateOFJoining,Profile,Resume,Salary,Name,Email,phone)
-               values(
-                    <cfqueryparam value="#arguments.dropDown#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#arguments.radioButton#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#relocateDate#" cfsqltype="CF_SQL_DATE">,
-                    <cfqueryparam value="#arguments.profile#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#local.file#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#salary#" cfsqltype="cf_sql_float">,
-                    <cfqueryparam value="#userName#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#arguments.email#" cfsqltype="cf_sql_varchar">,
-                    <cfqueryparam value="#phone#" cfsqltype="cf_sql_varchar">
-               ) 
-            </cfquery>
             <cflocation url="../welcome.cfm">
-        </cfif>
-
     </cffunction>
 </cfcomponent>
