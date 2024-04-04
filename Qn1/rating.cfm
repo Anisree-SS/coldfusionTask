@@ -8,7 +8,7 @@
 </head>
 <body>
    <div>
-        <form action="Qn1.cfm" method="post">
+        <form action="rating.cfm" method="post">
             <label> Enter the number</label>
             <input type="number" name="num">
             <br>
@@ -18,7 +18,7 @@
    </div>
    <div>
         <cfif structKeyExists(form,"num")>
-            <cfset local.demoObj = createObject("component","components/qn1")>
+            <cfset local.demoObj = createObject("component","controls/rating")>
             <cfoutput>
                 <p>#local.demoObj.show(form.num)#</p>
             </cfoutput>

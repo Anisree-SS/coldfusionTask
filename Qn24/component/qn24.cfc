@@ -4,7 +4,7 @@
         <cfargument name="email" required="true">
 
         <cfquery name="checkEmail" datasource="demo">
-            SELECT * FROM mailList
+            SELECT 1 FROM mailList
             WHERE Gmail = <cfqueryparam value="#arguments.email#" cfsqltype="CF_SQL_VARCHAR">
         </cfquery>
         <cfif checkEmail.recordCount>

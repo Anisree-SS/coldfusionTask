@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/styleQn28.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
     <div>
         <cfoutput>
             <cfif structKeyExists(form,"password")>
-                <cfinvoke component="component/qn28" method="login" returnvariable="loginMsg">
+                <cfinvoke component="controls/pages" method="login" returnvariable="loginMsg">
                     <cfinvokeargument name="userName" value="#form.userName#">
                     <cfinvokeargument name="password" value="#form.password#">
                 </cfinvoke>

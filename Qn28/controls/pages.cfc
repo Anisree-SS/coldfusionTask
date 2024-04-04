@@ -39,12 +39,12 @@
 
         <!--- Add new row --->
         <cffunction name="addRow" access="remote">
-            <cfargument name="pageName" required="true">
-            <cfargument name="pageDes" required="true">
+            <cfargument name="pageNames" required="true">
+            <cfargument name="pageDess" required="true">
             
             <cfquery name="pageCheck">
-                select * from page
-                where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
+                select 1 from page
+                where pageName=<cfqueryparam value="#arguments.pageNames#" cfsqltype="cf_sql_varchar">
             </cfquery>
             <cfif pageCheck.recordCount>
                 <cfreturn "the page is already present">
@@ -52,8 +52,8 @@
                     <cfquery name="insertRow">
                         insert into page (pageName,pageDes)
                         values(
-                            <cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">,
-                            <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
+                            <cfqueryparam value="#arguments.pageNames#" cfsqltype="cf_sql_varchar">,
+                            <cfqueryparam value="#arguments.pageDess#" cfsqltype="cf_sql_varchar">
                         )
                     </cfquery>
                     <cfreturn "Data inserted successfully">

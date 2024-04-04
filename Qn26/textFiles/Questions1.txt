@@ -1,0 +1,185 @@
+## Basic - JS Programing fundamentals  : Level-1
+
+Write JS Programs for following questions:
+ 
+1 Print Hello world.
+
+2 Programm to add two numbers.
+
+3 Define variable with var and short declaration method.(skip)
+
+4 Find Sum and average of three numbers.
+
+5 Simple interest
+
+        Simple Interest = (principal amount  rate of interest  years) / 100
+6 Find Compound Interest
+
+    Write a JS Program to calculate Compound Interest. This JSlang program allows the user to enter the principal amount, totals years, and interest rates and then find the Compound Interest.
+
+      
+7 Find area of circle
+
+        A = π r²
+
+8 Program to add, substract,multiply and divide two float numbers.
+
+9 Find Cube of a number
+
+10 Program to check a number is Even or Odd
+
+11 Find whether a given year is a leap year or not
+
+12 Swap two numbers
+
+13 Calculate power of a number
+
+14 Sum of Digits of a number
+
+15 Reverse of a number
+
+16 Find smallest and largest of three numbers
+
+17 Program to check a number is prime number or not
+
+18 Write a C program to find the eligibility of admission for a professional course based on the following criteria: 
+	Eligibility Criteria : Marks in Maths >=65 and Marks in Phy >=55 and Marks in Chem>=50 and Total in all three subject >=190 or Total in Maths and Physics >=140 
+	Input the marks obtained in Physics :65, Input the marks obtained in Chemistry :51, Input the marks obtained in Mathematics :72, Total marks of Maths, Physics and Chemistry : 188, Total marks of Maths and Physics : 137
+	The candidate is not eligible.
+	
+19 Print corresponding day in a week
+
+20 Program to create a simple calculator
+
+https://
+## Looping and JS Programing fundamentals
+
+21 Print 1 to 100 without using loop 
+22 Print 1 to 100 
+23 JS Program to find Factors of a Number
+24 JS Program to find Factorial of a Number
+25 JS Program to find First Digit and Last Digit of a Number
+26 JS Program to print Multiplication Table
+27 JS Program to print Natural Numbers from 1 to N
+28 JS Program to print Natural Numbers in Reverse Order
+29 JS Program to find Number divisible by 5 and 11 up to N
+30 JS Program to print Odd Numbers 1 to N
+31 JS Program to find Product of Digits in a Number
+32 check given String is palindrome or not
+33 Check Perfect Number
+34 Check Prime Number
+35 Check Positive or Negative
+36 JS Program to Count Total Notes in an Amount
+37 JS Program to print Even Numbers from 1 to N
+38 Sum and Average of Natural Numbers
+39 Sum of Even Numbers   
+40 Sum of Even and Odd Numbers
+41 Program to calculate Electricity Bill
+
+    The electricity board charges different tariffs based on the unit’s consumption. 
+
+    - Charges for first 50 units are 2.60 Rs.
+    - Charges for the next 50 units are 3.25 Rs.
+    - Charges for the next 100 units are 5.65 Rs.
+    - And if the consumption unit is greater than 200 , charge should be 7.25
+    - and there should be apply 0.5% trariff charge if the overall consumption is greater than 700 units.
+
+
+42 Program to Calculate Employee Salary
+    This JS program uses the Else If statement to calculate the employee’s gross salary. 
+
+        Gross Salary = Basic salary + HRA + DA
+
+    - If basic salary lessthan or equals to 10000, then
+        hra = 8% of basic salary
+        da = 10% of basic salary
+
+    - If basic salary lessthan or equals to 20000, then
+        hra = 16% of basic salary
+        da = 20% of basic salary
+
+    - If basic salary greater than 20000, then
+        hra = 24% of basic salary
+        da = 30% of basic salary
+
+43 JS Program to find Volume and Surface Area of a Cone
+   
+        Cone Surface Area = πrl + πr² (l = length, r = radius)
+        Volume of a Cone = 1/3 πr²h ( h = Cone height)
+        The Lateral Surface Area of a Cone = πrl
+
+		
+44 JS Program to find Volume and Surface Area of a Cube
+
+        Surface Area of a Cube = 6l² (l = length of any side of a Cube).
+        Cube Volume = l  l  l
+        The Lateral Surface Area of a Cube = 4  (l  l)
+
+45 JS Program to find Surface Area and Volume of a Cuboid
+
+        Total Surface Area of a Cuboid = 2lw + 2lh + 2wh, where l = length, w = width, and h = height
+        Volume of a Cuboid = lbh
+        The Lateral Surface Area of a Cuboid = 2h (l + w)
+
+46 JS Program to find Volume and Surface Area of a Cylinder
+
+        Surface Area of a Cylinder = 2πr² + 2πrh (r = radius and h = cylinder height).
+        Cylinder Volume = πr²h
+        The Lateral Surface Area of a Cylinder = 2πrh
+        Cylinder Top Or Bottom Surface Area = πr²
+
+47 JS Program to find Volume and Surface Area of a Sphere
+
+        Sphere Surface Area = 4πr²
+        The radius of a Sphere = √surface_area / 4π
+        Sphere Volume = 4πr³
+		
+48 Write a JS Program to Count Digits in a Number.
+49 Print Fibonacci series Up to N (0, 1, 1, 2, 3, 5, 8, 13, 21 etc)
+50 Write a program to perform menu based arithmetic operations.
+
+        1 - Add
+        2 - Substract
+        3 - Multiply
+        4 - Division
+		5 - Exit
+	(NB : The program exit until you enter 5, otherwise return back to menu )
+
+
+
+1.  Js program to Check Palindrome Number 
+2.  Js program to concatinate two strings  
+3.  Js program to print ASCII value of String Characters
+4.  Js program to concat Two String(Method)
+5.  Js program to convert Byte to String
+    byte := []byte{72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100}
+
+6.  Js program to find First Character in a String
+7.  Js program to find Last Character in a String
+8.  Js program to find middle Character in a String 
+    testcase: If the string have no perfect middle, then trow an meaningful error message
+
+9.  Js program to print String Characters
+10. Js program to print String Length with and without len() function
+11. Js program to print the index of specified character in a string
+12. Js program to check the occurence of a given character in a string
+13. Js program to check the specified substring is the prefix of the given string
+14. Js program to replace a string with another string
+15. Js program to reverse the case(if the given string is in lowercase, then change it to uppercase and viceversa)
+16. Js program to reverse all the vowels present in a given string. Return the new string
+17. Js program to count alphabets, digits or a special symbol in an input string
+18. Js program to count vowels and consonents in an input string
+19. Js program to check the given string with chars (){}[], are closed correctly. E.g () is valid, but )( is not valid. ({}) Is valid, but (}{) is not valid. (({{[]}})) Is valid.
+20. Js program to find the largest and smallest word in a string
+21. Js program to change every letter in a given string with the letter following it in the alphabet (ie. a becomes b, p becomes q, z becomes a)
+22. Js program to identify the missing letter in a given string (list of alphabets). The method returns, "There is no missing letter!" if no letters are missing from the string.
+**Example:**
+Original string: abcdef
+Identify the missing letter in the said string:
+There is no missing letter!
+
+23. Js program to delete all consonents from the string "Hello, have a good day".
+24. Js program to find out the number of occurrence of all alphabets in that string. Find out the alphabet with maximum occurrence.
+25. Input a string which contains some palindrome substrings. Js program to find out the position of palindrome substrings if exist and replace it by . (For example if input string is “bob has a radar plane” then it should convert in “** has a ***** plane”.
+
+
