@@ -20,14 +20,5 @@
             <input type="submit" id="submitButton" value="submit" name="submit" disabled>
         </form>        
     </div>
-    <div>
-        <cfif structKeyExists(form,"email")>
-            <cfinvoke component="component/qn24" method="uploadMail" returnvariable="msg">
-                <cfinvokeargument name="name" value="#form.name#">
-                <cfinvokeargument name="email" value="#form.email#">
-            </cfinvoke>
-            <cfdump var = "#msg#">
-        </cfif>
-    </div>
 </body>
 </html>
