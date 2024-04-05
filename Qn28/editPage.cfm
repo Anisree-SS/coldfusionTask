@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<cfset variables.pageId=0>
+<cfset variables.name=''>
+<cfset variables.description=''>
+<cfset variables.editMsg=''>
+<cfif structKeyExists(url,"pageId")>
+    <cfset variables.pageId=url.pageId>
+    <cfset variables.checkRow=createObject("component","controls/pages").editRow(url.pageId)>
+    <cfset variables.name=variables.checkRow.pageName>
+    <cfset variables.description=variables.checkRow.pageDes>
+</cfif>
+<cfif StructKeyExists(form,"pageName")>
+    <cfif IsNumeric(variables.pageId) AND variables.pageId GT 0>
+        <cfinvoke method="updateRow" component="controls/pages" returnvariable="variables.editMsg">
+            <cfinvokeargument name="pageId" value="#form.pageId#">
+            <cfinvokeargument name="pageName" value="#form.pageName#">
+            <cfinvokeargument name="pageDes" value="#form.pageDes#">
+        </cfinvoke>
+    <cfelse> 
+        <cfinvoke method="addRow" component="controls/pages" returnvariable="variables.editMsg">
+            <cfinvokeargument name="pageName" value="#form.pageName#">
+            <cfinvokeargument name="pageDes" value="#form.pageDes#">
+        </cfinvoke>  
+    </cfif>  
+</cfif>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,39 +30,24 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <h3>EDIT PAGE</h3>
-    </div>
     <cfoutput>
-        <div>
-            <cfif StructKeyExists(form,"pageName")>
-                <cfif StructKeyExists(url,"idPage")&& StructKeyExists(url,"pageName")&&StructKeyExists(url,"pageDes")>
-                    <cfinvoke method="editRow" component="controls/pages" returnvariable="editMsg">
-                        <cfinvokeargument name="pageName" value="#form.pageName#">
-                        <cfinvokeargument name="pageDes" value="#form.pageDes#">
-                        <cfinvokeargument name="idPage" value="#url.idPage#">
-                    </cfinvoke>
-                <cfelse>
-                    <cfinvoke method="addRow" component="controls/pages" returnvariable="editMsg">
-                        <cfinvokeargument name="pageName" value="#form.pageNames#">
-                        <cfinvokeargument name="pageDes" value="#form.pageDess#">
-                    </cfinvoke>  
-                </cfif>       
-                <p>#editMsg#</p>
-            </cfif>
+           
         </div>
-        <div>
-            <form action="" method="post">
+            <div>
+                <form action="editPage.cfm" method="post">
                 <lable>Enter Page Name : </labe>
-                <input type="text" name="pageName" placeholder="#url.pageName#"></br>
+                <input type="hidden" name="pageId" value="#variables.pageId#">
+                <input type="text" name="pageName" value="#variables.name#"></br>
                 <label>Enter page Description : </label>
-                <textarea name="pageDes" placeholder="#url.pageDes#"></textarea><br>
+                <textarea name="pageDes">#variables.description#</textarea><br>
                 <br>
-                <input type="submit" value="Edit" name="submit">
+                <input type="submit" value="Edit" name="submit" id="submitBtn">
             </form>
+            </div>
+            <p>#variables.editMsg#</p>
+            <button type="button"><a href="list.cfm">Back</a></button>
+            <button type="button"><a href="controls/pages.cfc?method=pageLogin">logout</a></button>
         </div>
     </cfoutput>
-    <button type="button"><a href="adminPage.cfm">Back</a></button>
-    <button type="button"><a href="login.cfm">logout</a></button>
 </body>
 </html>

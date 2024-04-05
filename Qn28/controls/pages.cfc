@@ -1,6 +1,20 @@
 <cfcomponent>
-        <!--- Login --->
+        <!---  log in --->
         <cffunction name="login" access="public">
+            <cfif session.isLogin>
+                <cflocation url="list.cfm" addToken="no">                    
+            </cfif>
+        </cffunction>
+
+        <!--- Log Out --->
+        <cffunction name="pageLogin" access="remote">
+            <CFSET StructClear(Session)>
+            <cfset session.isLogin=false>
+            <cflocation url="../login.cfm" addToken="no">
+        </cffunction>
+
+        <!--- Do Login --->
+        <cffunction name="doLogin" access="public">
             <cfargument name="userName" required="true">
             <cfargument name="password" required="true">
             
@@ -16,13 +30,9 @@
                     select role from loginTable
                     where userId=<cfqueryparam value="#local.id#" cfsqltype="cf_sql_integer">
                 </cfquery>
-
-                <cfif checkRole.role EQ "admin" || checkRole.role EQ "editor">
-                    <cflocation url="adminPage.cfm">
-                    <cfelseif checkRole.role EQ "user">
-                        <cflocation url="userPage.cfm">
-                    <cfelse>
-                        <cfreturn "unknown role">
+                <cfset session.role=checkRole.role>
+                <cfif session.role EQ "admin" || session.role EQ "editor" || session.role EQ "user">
+                    <cflocation url="list.cfm">
                 </cfif>
                 <cfelse>
                     <cfreturn "invalid">
@@ -39,12 +49,12 @@
 
         <!--- Add new row --->
         <cffunction name="addRow" access="remote">
-            <cfargument name="pageNames" required="true">
-            <cfargument name="pageDess" required="true">
+            <cfargument name="pageName" required="true">
+            <cfargument name="pageDes" required="true">
             
             <cfquery name="pageCheck">
                 select 1 from page
-                where pageName=<cfqueryparam value="#arguments.pageNames#" cfsqltype="cf_sql_varchar">
+                where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
             </cfquery>
             <cfif pageCheck.recordCount>
                 <cfreturn "the page is already present">
@@ -52,8 +62,8 @@
                     <cfquery name="insertRow">
                         insert into page (pageName,pageDes)
                         values(
-                            <cfqueryparam value="#arguments.pageNames#" cfsqltype="cf_sql_varchar">,
-                            <cfqueryparam value="#arguments.pageDess#" cfsqltype="cf_sql_varchar">
+                            <cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">,
+                            <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                         )
                     </cfquery>
                     <cfreturn "Data inserted successfully">
@@ -72,23 +82,25 @@
 
         <!--- Edit Row --->
         <cffunction name="editRow" access="remote">
-            <cfargument name="pageName" required="true">
-            <cfargument name="pageDes" required="true">
-            <cfargument name="idPage" required="true">
+            <cfargument name="pageId" required="true">
             <cfquery name="check">
                 select * from page 
-                where pageId=<cfqueryparam value="#arguments.idPage#" cfsqltype="cf_sql_integer">
+                where pageId=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
             </cfquery>
-            <cfif check.recordCount>
+            <cfreturn check>
+        </cffunction>
+
+        <!---update Row --->
+            <cffunction name="updateRow" access="remote">
+                <cfargument name="pageId" required="true">
+                <cfargument name="pageName" required="true">
+                <cfargument name="pageDes" required="true">
                 <cfquery name="updatePage">
                     update page set pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">,
                     pageDes=<cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                     where pageId=<cfqueryparam value="#arguments.idPage#" cfsqltype="cf_sql_integer">
                 </cfquery>
                 <cfreturn "updated!!!!!!">  
-            <cfelse>
-                <cfreturn "there is no page">
-            </cfif>
         </cffunction>
 
         <!--- Delete Row --->

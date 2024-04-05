@@ -19,7 +19,7 @@
                 <p>#pageDes#</p>
             </div>    
             </cfloop>      
-        <button type="button"><a href="userPage.cfm">Back</a></button>
+        <button type="button"><a href="list.cfm">Back</a></button>
         <button type="button"><a href="login.cfm">logout</a></button>
     </cfoutput>
 </body>

@@ -1,3 +1,5 @@
+<cfset result=createObject("component","controls/pages").login()>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@
 </head>
 <body>
     <div>
-        <form action="" method="post" >
+        <form action="login.cfm" method="post" >
             <label>User Name : </label>
             <input type="text" name="userName"><br>
             <label>Password : </label>
@@ -19,7 +21,7 @@
     <div>
         <cfoutput>
             <cfif structKeyExists(form,"password")>
-                <cfinvoke component="controls/pages" method="login" returnvariable="loginMsg">
+                <cfinvoke component="controls/pages" method="doLogin" returnvariable="loginMsg">
                     <cfinvokeargument name="userName" value="#form.userName#">
                     <cfinvokeargument name="password" value="#form.password#">
                 </cfinvoke>
