@@ -14,12 +14,12 @@
         </cffunction>
 
         <!--- Do Login --->
-        <cffunction name="doLogin" access="public">
+        <cffunction name="doLogin" access="public" retrunType="string">
             <cfargument name="userName" required="true">
             <cfargument name="password" required="true">
             
             <cfquery name="checkLogin" result="loginCheck">
-                select * from loginTable
+                select userId,userName,password from loginTable
                 where userName=<cfqueryparam value="#arguments.userName#" cfsqltype="cf_sql_varchar">
                 AND password=<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar"> 
             </cfquery>
@@ -40,67 +40,63 @@
         </cffunction>
 
         <!--- For Display Table --->
-        <cffunction name="display" access="remote">
+        <cffunction name="displayPage" access="remote" retrunType="query">
             <cfquery name="forDisplay">
-                select * from page;
+                select pageId,pageName,pageDes from page;
             </cfquery>
             <cfreturn forDisplay>
         </cffunction>
 
-        <!--- Add new row --->
-        <cffunction name="addRow" access="remote">
-            <cfargument name="pageName" required="true">
-            <cfargument name="pageDes" required="true">
-            
-            <cfquery name="pageCheck">
-                select 1 from page
-                where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
-            </cfquery>
-            <cfif pageCheck.recordCount>
-                <cfreturn "the page is already present">
-                <cfelse>
-                    <cfquery name="insertRow">
-                        insert into page (pageName,pageDes)
-                        values(
-                            <cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">,
-                            <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
-                        )
-                    </cfquery>
-                    <cfreturn "Data inserted successfully">
-            </cfif>
-        </cffunction>
-
         <!--- view for user--->
-        <cffunction name="viewData" access="remote">
+        <cffunction name="viewpage" access="remote" retrunType="query">
             <cfargument name="idPage">
             <cfquery name="forDisplay">
-                select * from page
+                select pageId,pageName,pageDes from page
                 where pageId =<cfqueryparam value="#arguments.idPage#" cfsqltype="cf_sql_integer">
             </cfquery>
             <cfreturn forDisplay>
         </cffunction>
 
         <!--- Edit Row --->
-        <cffunction name="editRow" access="remote">
+        <cffunction name="editPage" access="remote" retrunType="query">
             <cfargument name="pageId" required="true">
             <cfquery name="check">
-                select * from page 
+                select pageId,pageName,pageDes from page 
                 where pageId=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
             </cfquery>
             <cfreturn check>
         </cffunction>
 
-        <!---update Row --->
-            <cffunction name="updateRow" access="remote">
-                <cfargument name="pageId" required="true">
-                <cfargument name="pageName" required="true">
-                <cfargument name="pageDes" required="true">
+        <!--- Save Page --->
+        <cffunction name="savePage" access="remote" retrunType="string">
+            <cfargument name="pageName" required="true">
+            <cfargument name="pageDes" required="true">
+            <cfargument name="pageId" required="true">
+            <cfif arguments.pageId GT 0>
                 <cfquery name="updatePage">
                     update page set pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">,
                     pageDes=<cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
-                    where pageId=<cfqueryparam value="#arguments.idPage#" cfsqltype="cf_sql_integer">
+                    where pageId=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
                 </cfquery>
-                <cfreturn "updated!!!!!!">  
+                <cfreturn "updated!!!!!!"> 
+                <cfelse>
+                    <cfquery name="pageCheck">
+                        select 1 from page
+                        where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
+                    </cfquery>
+                    <cfif pageCheck.recordCount>
+                        <cfreturn "the page is already present" >
+                        <cfelse>
+                            <cfquery name="insertRow">
+                                insert into page (pageName,pageDes)
+                                values(
+                                    <cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">,
+                                    <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
+                                )
+                            </cfquery>
+                            <cfreturn "Data inserted successfully">
+                    </cfif>
+                </cfif>
         </cffunction>
 
         <!--- Delete Row --->
@@ -110,6 +106,7 @@
                 delete from page
                 where pageId=<cfqueryparam value="#arguments.idPage#" cfsqltype="cf_sql_integer">
             </cfquery>
-            <cflocation url="../adminPAge.cfm">
+            <cflocation url="../list.cfm">
         </cffunction>
+
 </cfcomponent>

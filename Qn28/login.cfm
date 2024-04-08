@@ -1,4 +1,11 @@
+<cfset variables.loginMsg=''>
 <cfset result=createObject("component","controls/pages").login()>
+<cfif structKeyExists(form,"password")>
+    <cfinvoke component="controls/pages" method="doLogin" returnvariable="loginMsg">
+        <cfinvokeargument name="userName" value="#form.userName#">
+        <cfinvokeargument name="password" value="#form.password#">
+    </cfinvoke>
+</cfif>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,24 +16,22 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <form action="login.cfm" method="post" >
+    <div class="loginDiv">
+        <form action="login.cfm" method="post">
+            <!---<div>
+                <label>User Name </label>
+                <label>Password </label>
+            </div>--->
             <label>User Name : </label>
-            <input type="text" name="userName"><br>
+            <input type="text" name="userName" class="inputLogin"><br>
             <label>Password : </label>
-            <input type="password" name="password"><br>
+            <input type="password" name="password" class="inputLogin"><br>
             <input type="submit" name="submit" value="login">
         </form>
     </div>
     <div>
         <cfoutput>
-            <cfif structKeyExists(form,"password")>
-                <cfinvoke component="controls/pages" method="doLogin" returnvariable="loginMsg">
-                    <cfinvokeargument name="userName" value="#form.userName#">
-                    <cfinvokeargument name="password" value="#form.password#">
-                </cfinvoke>
-                #loginMsg#
-            </cfif>
+        <p class="error">#loginMsg#</p>
         </cfoutput>
     </div>
 </body>

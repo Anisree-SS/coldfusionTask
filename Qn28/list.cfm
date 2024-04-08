@@ -7,15 +7,16 @@
     <title>Document</title>
 </head>
 <body>
+    <cfoutput>
     <cfif session.role Eq "admin" || session.role Eq 'editor'>
         <cfset session.isLogin=true>
         <div>
             <h3>Admin OR Editor</h3>
         </div>
-        <cfoutput>
+        
             <div>
                 <cfset local.demo=createObject("component","controls/pages")>
-                <cfset local.display=#local.demo.display()#>
+                <cfset local.display=#local.demo.displayPage()#>
             </div>
             <div>
                 <table border="1">
@@ -46,17 +47,17 @@
                 </form>
             </div>
             <button type="button"><a href="controls/pages.cfc?method=pageLogin">logout</a></button>
-        </cfoutput>
+    
        
         <cfelse>
             <cfset session.isLogin=true>
             <div>
                 <h3>User Page</h3>
             </div>
-            <cfoutput>
+           
                 <div>
                     <cfset local.demo=createObject("component","controls/pages")>
-                    <cfset local.display=#local.demo.display()#>
+                    <cfset local.display=#local.demo.displayPage()#>
                 </div>
                 <div>
                     <table border="1">
@@ -73,7 +74,8 @@
                     </table>
                 </div>
                 <button type="button"><a href="controls/pages.cfc?method=pageLogin">logout</a></button>
-            </cfoutput>
+           
     </cfif>
+    </cfoutput>
 </body>
 </html>

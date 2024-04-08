@@ -13,3 +13,24 @@ div{
 input{
     margin: 10px;
 }
+
+.loginDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:34%;
+    margin-top :10%;
+    padding:10px;
+    border: 2px solid black;
+    background-color: bisque;
+    width: 30%;
+}
+
+.labelStyle{
+    display:flex;
+    justify-content: space-between;
+}
+
+.inputLogin{
+    border:none ;
+}
