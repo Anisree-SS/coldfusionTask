@@ -10,18 +10,26 @@
     <cfoutput>
     <cfif session.role Eq "admin" || session.role Eq 'editor'>
         <cfset session.isLogin=true>
-        <div>
+        <header class="navBar">
+            <div>
+                <h3>Data Dive</h3>
+            </div>
+            <div class="innerNav">
+                <a href="homePage.cfm">Home</a>
+                <a href="editPage.cfm"> Add New Page</a>
+                <a href="controls/pages.cfc?method=pageLogin">logout</a>
+            </div>
+        </header>
+        <div class="labelStyle">
             <h3>Admin OR Editor</h3>
         </div>
-        
             <div>
                 <cfset local.demo=createObject("component","controls/pages")>
                 <cfset local.display=#local.demo.displayPage()#>
             </div>
-            <div>
-                <table border="1">
+            <div class="labelStyle">
+                <table>
                     <tr>
-                        <th>Page ID</th>
                         <th>Page Name</th>
                         <th>Page Description</th>
                         <th>Edit</th>
@@ -32,7 +40,6 @@
                         <cfset session.pageName=#pageName#>
                         <cfset session.pageDes=#pageDes#>
                         <tr>
-                            <td>#pageId#</td>
                             <td>#pageName#</td>
                             <td>#pageDes#</td>
                             <td><a href="editPage.cfm?pageId=#pageId#">Edit</a></td>
@@ -41,41 +48,34 @@
                     </cfloop>      
                 </table>
             </div>
-            <div>
-                <form action="editPage.cfm" method="post">
-                    <input type="submit" value="Add New Page" name="submit">
-                </form>
-            </div>
-            <button type="button"><a href="controls/pages.cfc?method=pageLogin">logout</a></button>
-    
-       
+            
         <cfelse>
             <cfset session.isLogin=true>
             <div>
                 <h3>User Page</h3>
             </div>
            
-                <div>
-                    <cfset local.demo=createObject("component","controls/pages")>
-                    <cfset local.display=#local.demo.displayPage()#>
-                </div>
-                <div>
-                    <table border="1">
+            <div>
+                <cfset local.demo=createObject("component","controls/pages")>
+                <cfset local.display=#local.demo.displayPage()#>
+            </div>
+            <div>
+                <table border="1">
+                    <tr>
+                        <th>PageNo</th>
+                        <th>PageName</th>
+                    </tr>
+                    <cfloop query="#local.display#">
                         <tr>
-                            <th>PageNo</th>
-                            <th>PageName</th>
-                        </tr>
-                        <cfloop query="#local.display#">
-                            <tr>
-                                <td>#pageId#</td>
-                                <td><a href="userView.cfm?idPage=#pageId#">#pageName#</a></td>
-                            </tr>           
-                        </cfloop>
-                    </table>
-                </div>
-                <button type="button"><a href="controls/pages.cfc?method=pageLogin">logout</a></button>
-           
+                            <td>#pageId#</td>
+                            <td><a href="userView.cfm?idPage=#pageId#">#pageName#</a></td>
+                        </tr>           
+                    </cfloop>
+                </table>
+            </div>
+            <button type="button"><a href="controls/pages.cfc?method=pageLogin">logout</a></button>
     </cfif>
     </cfoutput>
+
 </body>
 </html>

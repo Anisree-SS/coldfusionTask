@@ -16,23 +16,25 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="loginDiv">
-        <form action="login.cfm" method="post">
-            <!---<div>
-                <label>User Name </label>
-                <label>Password </label>
-            </div>--->
-            <label>User Name : </label>
-            <input type="text" name="userName" class="inputLogin"><br>
-            <label>Password : </label>
-            <input type="password" name="password" class="inputLogin"><br>
-            <input type="submit" name="submit" value="login">
-        </form>
-    </div>
-    <div>
-        <cfoutput>
-        <p class="error">#loginMsg#</p>
-        </cfoutput>
-    </div>
+    <cfoutput>
+        <header class="navBar">
+            <div>
+                <h3>Data Dive</h3>
+            </div>
+        </header>
+        <div class="loginDiv">
+            <form action="login.cfm" method="post">
+                <h2 class="labelStyle">Log in</h2>
+                <div class="labelStyle">
+                    <input type="text" name="userName" class="inputLogin" placeholder="User Name">
+                    <input type="password" name="password" class="inputLogin" placeholder="Password">
+                </div>
+                <div class="labelStyle">
+                    <input type="submit" name="submit" value="login" class="inputLogin loginColor">
+                </div>
+                <p class="error labelStyle">#loginMsg#</p>
+            </form>
+        </div>
+    </cfoutput>
 </body>
 </html>

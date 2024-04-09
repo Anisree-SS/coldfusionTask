@@ -14,7 +14,7 @@
 <cfset variables.heading=structKeyExists(variables,"pageId") AND variables.pageId GT 0 ?"Edit Page":"Add Page">
 
 <cfif StructKeyExists(form,"pageName")>
-    <cfif len(trim(form.pageName)) EQ 0>
+   <cfif len(trim(form.pageName)) EQ 0>
         <cfset variables.Error&="Page name is required"&"<br>">
         <cfelseif REFind("[^A-Za-z]", form.pageName)>
             <cfset variables.Error&="Page name Should be string"&"<br>">
@@ -48,17 +48,17 @@
             </div>
                 <div>
                     <p style="color:green">#variables.editMsg#</p>
-                    <p style="color:red;">#variables.Error#</p>
+                    <p style="color:red;" id="error">#variables.Error#</p>
                 </div>
             <div>
-                <form action="" method="post">
-                <input type="hidden" name="pageId" value="#variables.pageId#" id="pageName">
-                <label>Page name : </label>
-                <input type="text" name="pageName" value="#variables.name#"></br>
-                <label>Page description : </label>
-                <textarea name="pageDes">#variables.description#</textarea><br>
-                <input type="submit" value="Save" name="submit" id="submitBtn">
-            </form>
+                <form action="editPage.cfm" method="post" id="target">
+                    <input type="hidden" name="pageId" value="#variables.pageId#" >
+                    <label>Page name <sup style="color:red">*</sup>: </label>
+                    <input type="text" name="pageName" value="#variables.name#" id="pageName"></br>
+                    <label>Page description <sup style="color:red">*</sup>: </label>
+                    <textarea name="pageDes" id="pageDes">#variables.description#</textarea><br>
+                    <input type="submit" value="Save" name="submit" id="submitBtn">
+                </form>
             </div>
             <button type="button"><a href="list.cfm">Back</a></button>
             <button type="button"><a href="controls/pages.cfc?method=pageLogin">logout</a></button>
