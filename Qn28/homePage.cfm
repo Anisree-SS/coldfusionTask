@@ -1,36 +1,100 @@
-<cfset variables.dataHeading=''>
-<cfset variables.data=''>
-
-<cfset variables.dataHeading=structKeyExists(session,"role") AND session.role EQ "user" ?"User":"Admin Or Editer">
-<cfset variables.data=structKeyExists(session,"role") AND session.role EQ "user" ?"We can view a list of pages and we can choose any of the page from the list. When we select a page we can view the description of the list of  ":"Admin Or Editer">
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/style.css">
     <title>Document</title>
 </head>
-<body>
-    <cfoutput>
-        <header class="navBar d-flex align-items-center justify-content-between col-12">
-           <nav class="navbar navbar-expand-lg flex-nowrap navbar-dark bg-primary px-3 px-sm-5 col-12">
-                <a class="navbar-brand" href=""><h3><b>Data Dive</b></h3></a>
+<cfoutput>
+    <body class="container-fluid p-0">
+        <div class="navBar d-flex align-items-center justify-content-center col-12 ">
+            <nav class="navbar navbar-expand-lg flex-nowrap navbar-dark  px-3 px-sm-5 col-12">
+                <a class="navbar-brand"><h3 class="clrHead"><b>Page Dive</b></h3></a>
                 <div class="collapse navbar-collapse d-flex align-items-center justify-content-between" id="navbarColor02">
                         <div class="d-flex  gap-3">
-                                <a class="nav-link" href="editPage.cfm">Page List</a>
+                                <a class="nav-link" href="homePage.cfm">Home</a>
+                                <a class="nav-link" href="list.cfm">Page List</a>
                         </div>
                         <a class="nav-link" href="controls/pages.cfc?method=pageLogin">Log Out</a>
                     </ul>
                 </div>
             </nav>
-        </header>
+        </div>
+
+        <cfif session.role EQ "user">
+            <cfset session.isLogin=true>
+            <div class="d-flex-column m-5">
+                <div class="d-flex align-items-center p-3 mx-5">
+                    <p class="h2"><i>Welcome to Page Dive! </i></p>
+                </div>
+                <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5">
+                    <div class="d-flex align-items-center justify-content-center mb-2">
+                        <img src="./assets/view.png" class="userView" alt='User View'>
+                    </div>
+                    <p><b>A</b>s a user, you have access to the latest content added by our administrators. You'll see the main titles of articles, images, or multimedia on our homepage. Simply click on a title to view the full details and dive deeper into the content that interests you. Enjoy exploring and discovering new information on our platform! </p>
+                </div>
+            </div>
+            <footer class="footerHeight bg-light d-flex justify-content-center align-items-center">
+                <div class="d-flex">
+                    <div class="m-4 d-flex justify-content-between text-sm ">
+                        <div>Page Dive</div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <nav class="navbar navbar-expand-lg navbar-light px-3">
+                        <a  href="homePage.cfm">Home</a>
+                    </nav>
+                    <nav class="navbar navbar-expand-lg navbar-light  px-3">
+                        <a  href="List.cfm">Page List</a>
+                    </nav>
+                </div>
+            </footer>
+            <cfelse>
+                <cfset session.isLogin=true>
+                <div class="d-flex align-items-center p-3 mx-5">
+                    <p class="h2"><i>Welcome to Page Dive! </i></p>
+                </div>
+                    <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
+                        <b class="h5">Add Page</b>
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <img src="./assets/add.jpg" class="adminView" alt='Add Page'>
+                        </div>
+                        <p> Easily upload new articles, images, or multimedia to your website. Our user-friendly interface makes it simple to keep your content fresh and engaging for your audience. </p>
+                    </div>
+                    <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
+                        <b  class="h5">Edit Page</b>
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <img src="./assets/edit.jpg" class="adminView" alt='Edit Page'>
+                        </div>
+                        <p>  Quickly make adjustments to existing content. Whether it's updating text, swapping out images, or refining layouts, you can ensure your website stays up-to-date with minimal effort.</p>
+                    </div>
+                    <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
+                        <b class="h5">Delete Page</b>
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <img src="./assets/delete.jpg" class="adminView" alt='Delete Page'>
+                        </div>
+                        <p>  Remove outdated or irrelevant content with ease. As an administrator, you have the power to maintain the relevance and integrity of your website by efficiently removing any unnecessary Page. </p>
+                    </div>
+                    <footer class="footerHeight bg-light d-flex justify-content-center align-items-center mt-5">
+                        <div class="d-flex">
+                            <div class="m-4 d-flex justify-content-between text-sm ">
+                                <div>Page Dive</div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <nav class="navbar navbar-expand-lg navbar-light px-3">
+                                <a  href="homePage.cfm">Home</a>
+                            </nav>
+                            <nav class="navbar navbar-expand-lg navbar-light  px-3">
+                                <a  href="List.cfm">Page List</a>
+                            </nav>
+                        </div>
+                    </footer>
+        </cfif>
        
-            
-       
-        <h4>#variables.dataHeading#</h4>
-        <p>#variables.data#</p>
-    </cfoutput>
-</body>
+    </body>
+ </cfoutput>
 </html>

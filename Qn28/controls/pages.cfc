@@ -2,7 +2,7 @@
         <!---  log in --->
         <cffunction name="login" access="public">
             <cfif session.isLogin>
-                <cflocation url="list.cfm" addToken="no">                    
+                <cflocation url="homePage.cfm" addToken="no">                    
             </cfif>
         </cffunction>
 
@@ -32,7 +32,7 @@
                 </cfquery>
                 <cfset session.role=checkRole.role>
                 <cfif session.role EQ "admin" || session.role EQ "editor" || session.role EQ "user">
-                    <cflocation url="list.cfm">
+                    <cflocation url="homePage.cfm">
                 </cfif>
                 <cfelse>
                     <cfreturn "invalid">

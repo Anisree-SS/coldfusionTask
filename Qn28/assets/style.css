@@ -3,7 +3,7 @@
     margin: 0px;
 }
 body{
-    background-color: rgb(217, 209, 224);
+    background-color: #E6DAFE;
 }
 
 .error{
@@ -57,9 +57,57 @@ tr{
     display: flex;
     justify-content: space-between;
     background-color: aliceblue;
-    padding:10px 20px ;
 }
 .innerNav{
     display: flex;
     gap:50px
+}
+
+.clrHead{
+    color:black;
+}
+
+.ImgStyle{
+    width:20px;
+    height:20px;
+}
+
+.userView{
+    width:55%;
+    height:55%;
+}
+.adminView{
+    width:150px;
+    height:150px;
+}
+
+.adminDiv{
+    width: 365.59px;
+    height: 418.58px;;
+}
+
+.back{
+	position:fixed;
+	height:50px;
+	width:50px;
+	bottom:20%;
+	cursor:pointer;
+	border-radius:24px;
+	display: flex;
+    justify-content: center;
+	align-items:center;
+	cursor: pointer;
+}
+
+.backStyle{
+    width:30px;
+    height: 30px;
+}
+
+.input{
+    width:100%;
+}
+
+a{
+    text-decoration: none;
 }
