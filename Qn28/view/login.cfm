@@ -1,7 +1,7 @@
 <cfset variables.loginMsg=''>
-<cfset result=createObject("component","controls/pages").login()>
+<cfset result=createObject("component","CFC.pages").login()>
 <cfif structKeyExists(form,"password")>
-    <cfinvoke component="controls/pages" method="doLogin" returnvariable="loginMsg">
+    <cfinvoke component="CFC.pages" method="doLogin" returnvariable="loginMsg">
         <cfinvokeargument name="userName" value="#form.userName#">
         <cfinvokeargument name="password" value="#form.password#">
     </cfinvoke>
@@ -9,13 +9,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./assets/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/style.css">
-    <title>Document</title>
-</head>
+<cfinclude template = "header.cfm">
 <body class="container-fluid p-0">
     <cfoutput>
         <div class="navBar d-flex align-items-center justify-content-center col-12 ">
@@ -25,7 +19,7 @@
                         <div class="d-flex  gap-3">
                                 <a class="nav-link" href="home.cfm">Home</a>
                         </div>
-                        <a class="nav-link" href="controls/pages.cfc?method=pageLogin">Log In</a>
+                        <a class="nav-link" href="pages.cfc?method=pageLogin">Log In</a>
                     </ul>
                 </div>
             </nav>

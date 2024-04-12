@@ -1,16 +1,19 @@
 <cfcomponent>
-        <!---  log in --->
+        <cffunction name="init" retrunType="void">
+            <cfset i = 1>
+        </cffunction>
+        
         <cffunction name="login" access="public">
             <cfif session.isLogin>
-                <cflocation url="homePage.cfm" addToken="no">                    
+                <cflocation url="../view/homePage.cfm" addToken="no">                    
             </cfif>
         </cffunction>
 
         <!--- Log Out --->
-        <cffunction name="pageLogin" access="remote">
+        <cffunction name="pageLogin" access="public">
             <CFSET StructClear(Session)>
             <cfset session.isLogin=false>
-            <cflocation url="../login.cfm" addToken="no">
+            <cflocation url="../view/login.cfm" addToken="no">
         </cffunction>
 
         <!--- Do Login --->
@@ -32,7 +35,7 @@
                 </cfquery>
                 <cfset session.role=checkRole.role>
                 <cfif session.role EQ "admin" || session.role EQ "editor" || session.role EQ "user">
-                    <cflocation url="homePage.cfm">
+                    <cflocation url="../view/homePage.cfm">
                 </cfif>
                 <cfelse>
                     <cfreturn "invalid">
@@ -106,7 +109,6 @@
                 delete from page
                 where pageId=<cfqueryparam value="#arguments.idPage#" cfsqltype="cf_sql_integer">
             </cfquery>
-            <cflocation url="../list.cfm">
+            <cflocation url="view/list.cfm">
         </cffunction>
-
 </cfcomponent>
