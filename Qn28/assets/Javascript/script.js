@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("form").submit(function (event) {
+    $("form").submit(function () {
         var pageName=$("#pageName").val().trim();
         var pageDes=$("#pageDes").val().trim();
         var allParas="";

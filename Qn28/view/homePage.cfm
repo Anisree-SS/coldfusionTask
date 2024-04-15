@@ -26,29 +26,29 @@
                 <div class="d-flex align-items-center p-3 mx-5">
                     <p class="h2"><i>Welcome to Page Dive! </i></p>
                 </div>
-                    <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
-                        <b class="h5">Add Page</b>
-                        <div class="d-flex align-items-center justify-content-center mb-2">
-                            <img src="../assets/images/add.jpg" class="adminView" alt='Add Page'>
-                        </div>
-                        <p> Easily upload new articles, images, or multimedia to your website. Our user-friendly interface makes it simple to keep your content fresh and engaging for your audience. </p>
+                <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
+                    <b class="h5">Add Page</b>
+                    <div class="d-flex align-items-center justify-content-center mb-2">
+                        <img src="../assets/images/add.jpg" class="adminView" alt='Add Page'>
                     </div>
-                    <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
-                        <b  class="h5">Edit Page</b>
-                        <div class="d-flex align-items-center justify-content-center mb-2">
-                            <img src="../assets/images/edit.jpg" class="adminView" alt='Edit Page'>
-                        </div>
-                        <p>  Quickly make adjustments to existing content. Whether it's updating text, swapping out images, or refining layouts, you can ensure your website stays up-to-date with minimal effort.</p>
+                    <p> Easily upload new articles, images, or multimedia to your website. Our user-friendly interface makes it simple to keep your content fresh and engaging for your audience. </p>
+                </div>
+                <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
+                    <b  class="h5">Edit Page</b>
+                    <div class="d-flex align-items-center justify-content-center mb-2">
+                        <img src="../assets/images/edit.jpg" class="adminView" alt='Edit Page'>
                     </div>
-                    <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
-                        <b class="h5">Delete Page</b>
-                        <div class="d-flex align-items-center justify-content-center mb-2">
-                            <img src="../assets/images/delete.jpg" class="adminView" alt='Delete Page'>
-                        </div>
-                        <p>  Remove outdated or irrelevant content with ease. As an administrator, you have the power to maintain the relevance and integrity of your website by efficiently removing any unnecessary Page. </p>
+                    <p>  Quickly make adjustments to existing content. Whether it's updating text, swapping out images, or refining layouts, you can ensure your website stays up-to-date with minimal effort.</p>
+                </div>
+                <div class="d-flex-column align-items-center p-3 border border border-light bg-light mx-5 my-1">
+                    <b class="h5">Delete Page</b>
+                    <div class="d-flex align-items-center justify-content-center mb-2">
+                        <img src="../assets/images/delete.jpg" class="adminView" alt='Delete Page'>
                     </div>
-                    <cfinclude template = "footer.cfm">   
+                    <p>  Remove outdated or irrelevant content with ease. As an administrator, you have the power to maintain the relevance and integrity of your website by efficiently removing any unnecessary Page. </p>
+                </div>
+                <cfinclude template = "footer.cfm">   
         </cfif>
     </body>
- </cfoutput>
+</cfoutput>
 </html>

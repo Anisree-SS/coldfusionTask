@@ -9,13 +9,16 @@
         </div>
         <div class="d-flex">
             <nav class="navbar navbar-expand-lg navbar-light px-3">
-                <a  href="homePage.cfm">Home</a>
+                <a  href="homePage.cfm" class="text-secondary">Home</a>
             </nav>
             <nav class="navbar navbar-expand-lg navbar-light  px-3">
-                <a  href="List.cfm">Page List</a>
+                <a  href="List.cfm" class="text-secondary">Page List</a>
             </nav>
             <nav class="navbar navbar-expand-lg navbar-light  px-3">
-                <a  href="List.cfm">#variables.addPage#</a>
+                <a  href="editPage.cfm" class="text-secondary">#variables.addPage#</a>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-light  px-3">
+                <a class="nav-link text-secondary" href="../models/pages.cfc?method=pageLogin">Log Out</a>
             </nav>
         </div>
     </footer>

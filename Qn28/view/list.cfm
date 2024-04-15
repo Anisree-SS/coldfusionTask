@@ -50,7 +50,7 @@
             <cfset session.isLogin=true>
             <cfinclude template="navbar.cfm">
             <div>
-                <cfset local.demo=createObject("component","../models/pages")>
+                <cfset local.demo=createObject("component","CFC.pages")>
                 <cfset local.display=#local.demo.displayPage()#>
             </div>
             <div class="m-5">

@@ -10,7 +10,8 @@
                         <a class="nav-link" href="list.cfm">Page List</a>
                         <a class="nav-link" href="editPage.cfm">#variables.addPage#</a>
                 </div>
-                <a class="nav-link" href="pages.cfc?method=pageLogin">Log Out</a>
+                <a class="nav-link" href="../models/pages.cfc?method=pageLogin">Log Out</a>
+                
             </ul>
         </div>
     </nav>

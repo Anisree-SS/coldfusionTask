@@ -1,6 +1,6 @@
 <cfinclude template="../controls/action.cfm">
-<html lang="en">
-<cfinclude template = "header.cfm">
+<cfinclude template ="header.cfm">
+
 <cfoutput>
     <body class="container-fluid p-0">
         <cfinclude template="navbar.cfm">

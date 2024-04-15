@@ -22,6 +22,7 @@ h3{
     left:36%;
     background-color: white;
     border-radius: 10px;
+    height:60%;
     width: 30%;
 }
 
@@ -54,14 +55,9 @@ tr{
 }
 
 .navBar{
-    display: flex;
-    justify-content: space-between;
     background-color: aliceblue;
 }
-.innerNav{
-    display: flex;
-    gap:50px
-}
+
 
 .clrHead{
     color:black;

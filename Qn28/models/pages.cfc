@@ -10,14 +10,14 @@
         </cffunction>
 
         <!--- Log Out --->
-        <cffunction name="pageLogin" access="public">
+        <cffunction name="pageLogin" access="remote">
             <CFSET StructClear(Session)>
             <cfset session.isLogin=false>
             <cflocation url="../view/login.cfm" addToken="no">
         </cffunction>
 
         <!--- Do Login --->
-        <cffunction name="doLogin" access="public" retrunType="string">
+        <cffunction name="doLogin" access="remote" retrunType="json" returnformat="json">
             <cfargument name="userName" required="true">
             <cfargument name="password" required="true">
             
@@ -35,10 +35,11 @@
                 </cfquery>
                 <cfset session.role=checkRole.role>
                 <cfif session.role EQ "admin" || session.role EQ "editor" || session.role EQ "user">
-                    <cflocation url="../view/homePage.cfm">
+                    <cfreturn {"message":"exists"}>
+                    <!---<cflocation url="../view/homePage.cfm">--->
                 </cfif>
                 <cfelse>
-                    <cfreturn "invalid">
+                    <cfreturn {"message":"invalid"}>
             </cfif>
         </cffunction>
 
@@ -109,6 +110,6 @@
                 delete from page
                 where pageId=<cfqueryparam value="#arguments.idPage#" cfsqltype="cf_sql_integer">
             </cfquery>
-            <cflocation url="view/list.cfm">
+            <cflocation url="../view/list.cfm">
         </cffunction>
 </cfcomponent>

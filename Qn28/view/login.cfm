@@ -1,11 +1,11 @@
 <cfset variables.loginMsg=''>
 <cfset result=createObject("component","CFC.pages").login()>
-<cfif structKeyExists(form,"password")>
-    <cfinvoke component="CFC.pages" method="doLogin" returnvariable="loginMsg">
+<!---<cfif structKeyExists(form,"password")>
+    <cfinvoke component="CFC.pages" method="doLogin" >
         <cfinvokeargument name="userName" value="#form.userName#">
         <cfinvokeargument name="password" value="#form.password#">
     </cfinvoke>
-</cfif>
+</cfif>--->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@
                         <div class="d-flex  gap-3">
                                 <a class="nav-link" href="home.cfm">Home</a>
                         </div>
-                        <a class="nav-link" href="pages.cfc?method=pageLogin">Log In</a>
+                        <a class="nav-link" href="../models/pages.cfc?method=pageLogin">Log In</a>
                     </ul>
                 </div>
             </nav>
@@ -28,13 +28,14 @@
             <form action="login.cfm" method="post">
                 <h2 class="labelStyle">Log in</h2>
                 <div class="labelStyle">
-                    <input type="text" name="userName" class="inputLogin" placeholder="User Name">
-                    <input type="password" name="password" class="inputLogin" placeholder="Password">
+                    <input type="text" name="userName" class="inputLogin" placeholder="User Name" id='name'>
+                    <input type="password" name="password" class="inputLogin" placeholder="Password" id='password'>
                 </div>
                 <div class="labelStyle">
-                    <input type="submit" name="submit" value="login" class="inputLogin loginColor">
+                    <input type="submit" name="submit" value="login" class="inputLogin loginColor" id='login'>
                 </div>
-                <p class="error labelStyle">#loginMsg#</p>
+                <p class="labelStyle text-success" id="success"></p>
+                <p class="labelStyle text-danger" id="invalid"></p>
             </form>
         </div>
     </cfoutput>

@@ -11,7 +11,7 @@
                         <div class="d-flex  gap-3">
                             <a class="nav-link" href="home.cfm">Home</a>
                         </div>
-                        <a class="nav-link" href="CFC.pages.cfc?method=pageLogin">Log In</a>
+                        <a class="nav-link" href="../models/pages.cfc?method=pageLogin">Log In</a>
                     </ul>
                 </div>
             </nav>
@@ -71,7 +71,7 @@
                     <a class="nav-link" href="home.cfm">Home</a>
                 </nav>
                 <nav class="navbar navbar-expand-lg navbar-light px-3">
-                    <a class="nav-link" href="pages.cfc?method=pageLogin">Log In</a>
+                    <a class="nav-link" href="../models/pages.cfc?method=pageLogin">Log In</a>
                 </nav>
             </div>
         </footer> 
