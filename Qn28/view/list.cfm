@@ -1,6 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="en">
+
 <cfinclude template = "header.cfm">
 <body class="container-fluid p-0">
     <cfoutput>
@@ -31,10 +30,10 @@
                         <tbody>
                         <tr>
                             <td>#pageName#</td>
-                            <td>#pageDes#</td>
+                            <td class="text-wrap">#pageDes#</td>
                             <td>
                                 <a href="editPage.cfm?pageId=#pageId#"  title="Edit this page"><img src="../assets/images/editIcon.png" class="ImgStyle" alt='Edit'></a>
-                                <a href="../models/pages.cfc?method=deleteRow&idPage=#pageId#" title="Delete this page"><img src="../assets/images/deleteIcon.png" class="ImgStyle" alt='Delete'></a>
+                                <a href="../models/pages.cfc?method=deleteRow&idPage=#pageId#" title="Delete this page"><img src="../assets/images/deleteIcon.png" class="ImgStyle" alt='Delete' id="delete"></a>
                             </td>
                         </tr>   
                         </tbody>  

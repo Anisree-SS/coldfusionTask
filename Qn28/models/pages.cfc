@@ -3,6 +3,7 @@
             <cfset i = 1>
         </cffunction>
         
+        <!--- Log in--->
         <cffunction name="login" access="public">
             <cfif session.isLogin>
                 <cflocation url="../view/homePage.cfm" addToken="no">                    
@@ -72,7 +73,7 @@
         </cffunction>
 
         <!--- Save Page --->
-        <cffunction name="savePage" access="remote" retrunType="string">
+        <cffunction name="savePage" access="remote" retrunType="json" returnformat="json">
             <cfargument name="pageName" required="true">
             <cfargument name="pageDes" required="true">
             <cfargument name="pageId" required="true">
@@ -82,14 +83,15 @@
                     pageDes=<cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                     where pageId=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
                 </cfquery>
-                <cfreturn "updated!!!!!!"> 
+                <cfreturn {"message": "updated"}>
+                <!---cfreturn "Data updated successfully"---> 
                 <cfelse>
                     <cfquery name="pageCheck">
                         select 1 from page
                         where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
                     </cfquery>
                     <cfif pageCheck.recordCount>
-                        <cfreturn "the page is already present" >
+                        <cfreturn {"message": "exists"}>
                         <cfelse>
                             <cfquery name="insertRow">
                                 insert into page (pageName,pageDes)
@@ -98,7 +100,8 @@
                                     <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                                 )
                             </cfquery>
-                            <cfreturn "Data inserted successfully">
+                            <cfreturn {"message": "inserted"}>
+                            <!---cfreturn "Data inserted successfully"--->
                     </cfif>
                 </cfif>
         </cffunction>

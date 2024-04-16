@@ -40,10 +40,10 @@
         <cfelseif IsNumeric(form.pageDes)>
             <cfset variables.Error&="Page description required strings also!!"&"<br>">
     </cfif>
-    <cfif len(trim(variables.Error)) eq 0>
+    <!---<cfif len(trim(variables.Error)) eq 0>
         <cfif IsNumeric(form.pageId)>
             <cfset variables.update=createObject("component","CFC.pages")>
             <cfset variables.editMsg=#variables.update.savePage(pageId=form.pageId,pageName=form.pageName,pageDes=form.pageDes)#>
         </cfif>
-    </cfif>  
+    </cfif>--->
 </cfif>

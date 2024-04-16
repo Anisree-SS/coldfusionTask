@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#login').click(function() {
+        $("#invalid").text("");
         var name = $('#name').val().trim(); 
         var password = $('#password').val().trim();
         if (name == ''|| password =='' ){
@@ -8,18 +9,19 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: '../models/pages.cfc?method=doLogin',
+            url: './../models/pages.cfc?method=doLogin',
             type: 'post',
             data:  {userName: name , password:password},
             dataType:"json",
             success: function(response) {
                 if (response.message == "exists"){
                     $("#success").text('Login successfull !!!!');
-                    console.log(response);
-                    window.location.href="../view/homePage.cfm";
+                    setTimeout(function() {
+                        window.location.href="../view/homePage.cfm";
+                    },1000);
 
-                } else if(response.message == "invalid") {
-                    $("#invalid").text('Something went wrong !!!!');
+                } else {
+                    $("#invalid").text('Invalid user name or password !!!!'); 
                 }
             },
             error: function(xhr, status, error) {
@@ -27,6 +29,7 @@ $(document).ready(function() {
             }
 
         });
+        return false;
     });
 });
 

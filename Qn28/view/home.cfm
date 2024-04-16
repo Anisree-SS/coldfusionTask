@@ -1,21 +1,8 @@
 
-<!DOCTYPE html>
-<html lang="en">
 <cfinclude template = "header.cfm">
 <cfoutput>
     <body class="container-fluid p-0">
-        <div class="navBar d-flex align-items-center justify-content-center col-12 ">
-            <nav class="navbar navbar-expand-lg flex-nowrap navbar-dark  px-3 px-sm-5 col-12">
-                <a class="navbar-brand"><h3 class="clrHead"><b>Page Dive</b></h3></a>
-                <div class="collapse navbar-collapse d-flex align-items-center justify-content-between" id="navbarColor02">
-                        <div class="d-flex  gap-3">
-                            <a class="nav-link" href="home.cfm">Home</a>
-                        </div>
-                        <a class="nav-link" href="../models/pages.cfc?method=pageLogin">Log In</a>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        <cfinclude template = "navbar.cfm">
         <div class="d-flex-column m-5">
             <div class="d-flex align-items-center p-3 mx-5">
                 <p class="h2">Welcome to Page Dive!</p>

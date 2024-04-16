@@ -1,6 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en">
 <cfinclude template = "header.cfm">
 <cfoutput>
     <body class="container-fluid p-0">

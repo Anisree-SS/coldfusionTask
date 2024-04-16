@@ -110,3 +110,9 @@ a{
 .forHeight{
     height: 100px;
 }
+
+.btnpos{
+    position:fixed;
+    right:0;
+    bottom:20%;
+}
