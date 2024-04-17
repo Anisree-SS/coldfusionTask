@@ -1,5 +1,4 @@
 
-
 <cfinclude template = "header.cfm">
 <body class="container-fluid p-0">
     <cfoutput>
@@ -14,7 +13,7 @@
                 <cfset local.display=#local.demo.displayPage()#>
             </div>
             <div class="labelStyle">
-                <table class="table table-hover table-hover table-striped">
+                <table class="table table-hover table-hover table-striped" id="listTable">
                     <thead>
                     <tr>
                         <th>Page Name</th>
@@ -23,17 +22,18 @@
                         
                     </tr>
                     </thead>
-                    <cfloop query="#local.display#">
+                    <cfloop query="#local.display#" >
                         <cfset session.pageId=#pageId#>
                         <cfset session.pageName=#pageName#>
                         <cfset session.pageDes=#pageDes#>
                         <tbody>
-                        <tr>
+                        <tr id="#pageId#">
                             <td>#pageName#</td>
                             <td class="text-wrap">#pageDes#</td>
                             <td>
                                 <a href="editPage.cfm?pageId=#pageId#"  title="Edit this page"><img src="../assets/images/editIcon.png" class="ImgStyle" alt='Edit'></a>
-                                <a href="../models/pages.cfc?method=deleteRow&idPage=#pageId#" title="Delete this page"><img src="../assets/images/deleteIcon.png" class="ImgStyle" alt='Delete' id="delete"></a>
+
+                                <button class="border-0 deleteBtn"  type="submit" data-id="#pageId#"><img src="../assets/images/deleteIcon.png" class="ImgStyle" alt='Delete'></button>
                             </td>
                         </tr>   
                         </tbody>  

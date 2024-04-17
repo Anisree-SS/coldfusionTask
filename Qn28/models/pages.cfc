@@ -83,7 +83,7 @@
                     pageDes=<cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                     where pageId=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
                 </cfquery>
-                <cfreturn {"message": "updated"}>
+                <cfreturn {"success":true, "msg":"Page updated successfully"}>
                 <!---cfreturn "Data updated successfully"---> 
                 <cfelse>
                     <cfquery name="pageCheck">
@@ -91,7 +91,7 @@
                         where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
                     </cfquery>
                     <cfif pageCheck.recordCount>
-                        <cfreturn {"message": "exists"}>
+                        <cfreturn {"success":false, "msg":"The page is already present"}>
                         <cfelse>
                             <cfquery name="insertRow">
                                 insert into page (pageName,pageDes)
@@ -100,19 +100,19 @@
                                     <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                                 )
                             </cfquery>
-                            <cfreturn {"message": "inserted"}>
+                            <cfreturn {"success":true,"msg":"Page inserted successfully"}>
                             <!---cfreturn "Data inserted successfully"--->
                     </cfif>
                 </cfif>
         </cffunction>
 
         <!--- Delete Row --->
-        <cffunction name="deleteRow" access="remote">
-            <cfargument name="idPage" required="true">
+        <cffunction name="deletePage" access="remote" retrunType="json" returnformat="json">
+            <cfargument name="pageId" required="true">
             <cfquery name="delete">
                 delete from page
-                where pageId=<cfqueryparam value="#arguments.idPage#" cfsqltype="cf_sql_integer">
+                where pageId=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
             </cfquery>
-            <cflocation url="../view/list.cfm">
+            <cfreturn {"success":true}>
         </cffunction>
 </cfcomponent>
