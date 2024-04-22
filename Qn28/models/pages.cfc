@@ -1,24 +1,24 @@
 <cfcomponent>
-        <cffunction name="init" retrunType="void">
+        <cffunction name="init" returntype="void">
             <cfset i = 1>
         </cffunction>
         
         <!--- Log in--->
-        <cffunction name="login" access="public" retrunType="void">
+        <cffunction name="login" access="public" returntype="void">
             <cfif session.isLogin>
                 <cflocation url="../view/homePage.cfm" addToken="no">                    
             </cfif>
         </cffunction>
 
         <!--- Log Out --->
-        <cffunction name="pageLogin" access="remote" retrunType="void">
+        <cffunction name="pageLogin" access="remote" returntype="void">
             <CFSET StructClear(Session)>
             <cfset session.isLogin=false>
             <cflocation url="../view/login.cfm" addToken="no">
         </cffunction>
 
         <!--- Do Login --->
-        <cffunction name="doLogin" access="remote" retrunType="json" returnformat="json">
+        <cffunction name="doLogin" access="remote" returnformat="json">
             <cfargument name="userName" required="true">
             <cfargument name="password" required="true">
             
@@ -46,7 +46,7 @@
         </cffunction>
 
         <!--- For Display Table --->
-        <cffunction name="displayPage" access="remote" retrunType="query">
+        <cffunction name="displayPage" access="remote" returntype="query">
             <cfquery name="forDisplay">
                 select pageId,pageName,pageDes from page;
             </cfquery>
@@ -54,7 +54,7 @@
         </cffunction>
 
         <!--- view for user--->
-        <cffunction name="viewpage" access="remote" retrunType="query">
+        <cffunction name="viewpage" access="remote" returntype="query">
             <cfargument name="idPage">
             <cfquery name="forDisplay">
                 select pageId,pageName,pageDes from page
@@ -64,7 +64,7 @@
         </cffunction>
 
         <!--- Edit Row --->
-        <cffunction name="editPage" access="remote" retrunType="query">
+        <cffunction name="editPage" access="remote" returntype="query">
             <cfargument name="pageId" required="true">
             <cfquery name="check">
                 select pageId,pageName,pageDes from page 
@@ -74,7 +74,7 @@
         </cffunction>
 
         <!--- Save Page --->
-        <cffunction name="savePage" access="remote" retrunType="json" returnformat="json">
+        <cffunction name="savePage" access="remote" returnformat="json">
             <cfargument name="pageName" required="true">
             <cfargument name="pageDes" required="true">
             <cfargument name="pageId" required="true">
@@ -84,31 +84,36 @@
                     pageDes=<cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                     where pageId=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
                 </cfquery>
-                <cfreturn {"success":true, "msg":"Page updated successfully"}>
+                <cfreturn '{"success":true, "msg":"Page updated successfully"}'>
                 <!---cfreturn "Data updated successfully"---> 
                 <cfelse>
-                    <cfquery name="pageCheck">
-                        select 1 from page
-                        where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
+                    <cfquery name="insertRow">
+                        insert into page (pageName,pageDes)
+                        values(
+                            <cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">,
+                            <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
+                        )
                     </cfquery>
-                    <cfif pageCheck.recordCount>
-                        <cfreturn {"success":false, "msg":"The page is already present"}>
-                        <cfelse>
-                            <cfquery name="insertRow">
-                                insert into page (pageName,pageDes)
-                                values(
-                                    <cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">,
-                                    <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
-                                )
-                            </cfquery>
-                            <cfreturn {"success":true,"msg":"Page inserted successfully"}>
-                            <!---cfreturn "Data inserted successfully"--->
-                    </cfif>
-                </cfif>
+                    <cfreturn '{"success":true,"msg":"Page inserted successfully"}'>
+                    <!---cfreturn "Data inserted successfully"--->
+            </cfif>
+        </cffunction>
+
+        <cffunction name='checkPage' access="remote" returnformat="json">
+            <cfargument name="pageName" required="true">
+            <cfquery name="pageCheck">
+                select 1 from page
+                where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
+            </cfquery>
+            <cfif pageCheck.recordCount>
+                <cfreturn {"success":false, "msg":"The page is already present"}>
+                <cfelse>
+                    <cfreturn{"success":true, "msg":""}>
+            </cfif>
         </cffunction>
 
         <!--- Delete Row --->
-        <cffunction name="deletePage" access="remote" retrunType="json" returnformat="json">
+        <cffunction name="deletePage" access="remote" returnformat="json">
             <cfargument name="pageId" required="true">
             <cfquery name="delete">
                 delete from page

@@ -8,6 +8,7 @@ $(document).ready(function() {
             $("#invalid").html('Required user name and password');
             return false;
         }
+        
         $.ajax({
             url: './../models/pages.cfc?method=doLogin',
             type: 'post',
@@ -33,29 +34,24 @@ $(document).ready(function() {
 
 
     $('#editForm').on("submit",function() {
-        var pageId = $('#pageId').val().trim(); 
         var pageName = $('#pageName').val().trim();
-        var pageDes = $('#pageDes').val().trim();
         $("#editSuccess").text(""); 
-        console.log("recall");
+
         if(validation()){
             $.ajax({
-                url: '../controller/pages.cfc?method=callSavePage',
+                url: '../models/pages.cfc?method=checkPage',
                 type: 'post',
-                data: {pageId : pageId, pageName : pageName, pageDes : pageDes},
+                data: { pageName : pageName},
                 dataType:"json",
                 success: function(response) {
-                    $("#error").html("");
+                    console.log(response.success);
                     if(response.success){
-                        $("#editSuccess").text(response.msg);
-                        delayRedirect();
+                        doSave();
                     }
                     else{
                         $("#error").html(response.msg);    
+                        return false;
                     }
-                },
-                error: function(xhr, status, error) {
-                    console.log("An error occurred: " + error);
                 }
             });
         }
@@ -115,5 +111,31 @@ $(document).ready(function() {
         },1000);
     }
 
-    
+    function doSave(){
+        var pageId = $('#pageId').val().trim(); 
+        var pageName = $('#pageName').val().trim();
+        var pageDes = $('#pageDes').val().trim();
+        $("#editSuccess").text(""); 
+        $.ajax({
+            url: '../controller/pages.cfc?method=savePage',
+            type: 'post',
+            data:{ pageId : pageId, pageName : pageName, pageDes : pageDes},
+            dataType:"json",
+            success: function(response) {
+                $("#error").html("");
+                if(response.success){
+                    $("#editSuccess").html(response.msg);
+                    delayRedirect();
+                }
+                else{
+                    $("#error").html(response.msg);    
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("An error occurred: " + error);
+            } 
+        });
+        return false;
+    }
+
 });
