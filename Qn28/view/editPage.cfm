@@ -1,8 +1,8 @@
-<cfinclude template="../controller/action.cfm">
+<cfinclude template="../controller/pages.cfc">
 <cfinclude template ="header.cfm">
 
 <cfoutput>
-    <body class="container-fluid p-0 ">
+    <body class="container-fluid p-0">
         <cfinclude template="navbar.cfm">
         <div class="d-flex justify-content-center mt-5">
             <h2>#variables.heading#</h2>
@@ -11,7 +11,7 @@
             <p class="text-success" id="editSuccess"></p>
             <p class="text-danger" id="error"></p>
         </div>
-        <form action=""  method="post" id="editForm">
+        <form action="editPage.cfm"  method="post" id="editForm">
             <div class="form-group row px-0 mx-5">
                 <input type="hidden" name="pageId" value="#variables.pageId#" id="pageId">
                 <label for="pageName " class="col-sm-2 col-form-label px-0">Page Name</label>

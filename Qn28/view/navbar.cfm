@@ -4,8 +4,7 @@
 <cfset variables.addPage=''>
 
 <cfset variables.forLogin= session.isLogin?"Log out":"Log In">
-<cfset variables.forHome= session.isLogin?"homePage.cfm":"home.cfm">
-<cfset variables.pageList=session.isLogin &&(session.role EQ "admin"||session.role EQ "editor" ||session.role EQ "user")?"Page List":"">
+<cfset variables.pageList=session.isLogin &&(session.role EQ "admin"||session.role EQ "editor"||session.role EQ "user")?"Page List":"">
 <cfset variables.addPage=session.isLogin &&(session.role EQ "admin"||session.role EQ "editor")?"Add Page":"">
 
 <cfoutput>
@@ -13,13 +12,12 @@
     <nav class="navbar navbar-expand-lg flex-nowrap navbar-dark  px-3 px-sm-5 col-12">
         <a class="navbar-brand"><h3 class="clrHead"><b>Page Dive</b></h3></a>
         <div class="collapse navbar-collapse d-flex align-items-center justify-content-between" id="navbarColor02">
-                <div class="d-flex  gap-3">
-                        <a class="nav-link" href="#variables.forHome#">Home</a>
-                        <a class="nav-link" href="list.cfm">#variables.pageList#</a>
-                        <a class="nav-link" href="editPage.cfm">#addPage#</a>
-                </div>
-                <a class="nav-link" href="../models/pages.cfc?method=pageLogin">#variables.forLogin#</a>
-            </ul>
+            <div class="d-flex  gap-3">
+                <a class="nav-link" href="homePage.cfm">Home</a>
+                <a class="nav-link" href="list.cfm">#variables.pageList#</a>
+                <a class="nav-link" href="editPage.cfm">#variables.addPage#</a>
+            </div>
+            <a class="nav-link" href="../models/pages.cfc?method=pageLogin">#variables.forLogin#</a>
         </div>
     </nav>
 </div>

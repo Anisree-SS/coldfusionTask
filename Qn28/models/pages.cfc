@@ -4,14 +4,14 @@
         </cffunction>
         
         <!--- Log in--->
-        <cffunction name="login" access="public">
+        <cffunction name="login" access="public" retrunType="void">
             <cfif session.isLogin>
                 <cflocation url="../view/homePage.cfm" addToken="no">                    
             </cfif>
         </cffunction>
 
         <!--- Log Out --->
-        <cffunction name="pageLogin" access="remote">
+        <cffunction name="pageLogin" access="remote" retrunType="void">
             <CFSET StructClear(Session)>
             <cfset session.isLogin=false>
             <cflocation url="../view/login.cfm" addToken="no">
@@ -36,6 +36,7 @@
                 </cfquery>
                 <cfset session.role=checkRole.role>
                 <cfif session.role EQ "admin" || session.role EQ "editor" || session.role EQ "user">
+                    <cfset session.isLogin=true>
                     <cfreturn {"message":"exists"}>
                     <!---<cflocation url="../view/homePage.cfm">--->
                 </cfif>

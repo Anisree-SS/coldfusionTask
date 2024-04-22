@@ -8,7 +8,6 @@ $(document).ready(function() {
             $("#invalid").html('Required user name and password');
             return false;
         }
-
         $.ajax({
             url: './../models/pages.cfc?method=doLogin',
             type: 'post',
@@ -26,7 +25,7 @@ $(document).ready(function() {
                 }
             },
             error: function(xhr, status, error) {
-                alert("An error occurred: " + error);
+                console.log("An error occurred: " + error);
             }
         });
         return false;
@@ -41,7 +40,7 @@ $(document).ready(function() {
         console.log("recall");
         if(validation()){
             $.ajax({
-                url: '../models/pages.cfc?method=savePage',
+                url: '../controller/pages.cfc?method=callSavePage',
                 type: 'post',
                 data: {pageId : pageId, pageName : pageName, pageDes : pageDes},
                 dataType:"json",
@@ -49,25 +48,27 @@ $(document).ready(function() {
                     $("#error").html("");
                     if(response.success){
                         $("#editSuccess").text(response.msg);
-                        timeOut();
+                        delayRedirect();
                     }
                     else{
                         $("#error").html(response.msg);    
                     }
                 },
                 error: function(xhr, status, error) {
-                    alert("An error occurred: " + error);
+                    console.log("An error occurred: " + error);
                 }
             });
         }
         return false;
     });
 
+
     $('.deleteBtn').click(function() {
         var pageId =$(this).attr("data-id"); 
         var row=$(this);
-        console.log(row);
-
+        if(!confirm("Are you sure you want delete the page ?")){
+            return false;
+        }
         $.ajax({
             url: '../models/pages.cfc?method=deletePage',
             type: 'post',
@@ -79,42 +80,40 @@ $(document).ready(function() {
                     //$("#"+pageId).remove();
                 } 
             },
-            error: function(xhr, status, error) {
-                alert("An error occurred: " + error);
-            }
         });
         return true;
     });
-   
+
+
+    function validation(){
+        var allParas="";
+        var pageName = $('#pageName').val().trim();
+        var pageDes = $('#pageDes').val().trim();
+        if(pageName==''){  
+            allParas+="<br>Page name is required"; 
+        }
+        else if (/\d/.test(pageName)) {
+            allParas+="<br>Page name should be string values";              
+        }
+        if(pageDes==''){
+            allParas+="<br>Page description is required";
+        }
+        else if(!isNaN(pageDes)){
+            allParas+="<br>Page description required strings also";
+        }
+        if(allParas!==""){
+            $("#error").html(allParas);
+            return false; 
+        }
+        return true;
+    } 
+
+
+    function delayRedirect(){
+        setTimeout(function() {
+            window.location.href="../view/list.cfm";
+        },1000);
+    }
+
+    
 });
-
-function validation(){
-    var allParas="";
-    var pageName = $('#pageName').val().trim();
-    var pageDes = $('#pageDes').val().trim();
-    if(pageName==''){  
-        allParas+="<br>Page name is required"; 
-    }
-    else if (/\d/.test(pageName)) {
-        allParas+="<br>Page name should be string values";              
-    }
-    if(pageDes==''){
-        allParas+="<br>Page description is required";
-    }
-    else if(!isNaN(pageDes)){
-        allParas+="<br>Page description required strings also";
-    }
-    if(allParas!==""){
-        $("#error").html(allParas);
-        return false; 
-    }
-    return true;
-} 
-
-function timeOut(){
-    setTimeout(function() {
-        window.location.href="../view/list.cfm";
-    },1000);
-}
-
-

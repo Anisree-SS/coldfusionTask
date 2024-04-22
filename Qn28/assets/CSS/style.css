@@ -4,6 +4,7 @@
 }
 body{
     background-color: #E6DAFE;
+    height: 100%;
 }
 
 .error{
@@ -51,7 +52,6 @@ table{
 tr{
     background-color: white;
     height: 50px;
-    text-align: center;
 }
 
 .navBar{
@@ -115,4 +115,9 @@ a{
     position:fixed;
     right:0;
     bottom:20%;
+}
+
+.heights{
+    height: 100%;
+    
 }

@@ -10,14 +10,14 @@
             <div class="d-flex justify-content-center">
                 <h3>#pageName#</h3>
             </div>
-            <div class="d-flex-column align-items-center p-3 border border border-light mx-5">
-                <p>#pageDes#</p>
+            <div class="d-flex-column align-items-center p-3 border border border-light mx-5 ">
+                <p class="heights">#pageDes#</p>
             </div>    
             </cfloop>      
             <div class="back">
                 <a href="list.cfm"><img src="../assets/images/arrow.png" alt="back" class="backStyle"></a>
             </div>
-            <cfinclude template = "footer.cfm">
+            
     </cfoutput>
 </body>
 </html>
