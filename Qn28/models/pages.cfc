@@ -38,7 +38,7 @@
                 <cfif session.role EQ "admin" || session.role EQ "editor" || session.role EQ "user">
                     <cfset session.isLogin=true>
                     <cfreturn {"message":"exists"}>
-                    <!---<cflocation url="../view/homePage.cfm">--->
+                
                 </cfif>
                 <cfelse>
                     <cfreturn {"message":"invalid"}>
@@ -84,8 +84,7 @@
                     pageDes=<cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                     where pageId=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
                 </cfquery>
-                <cfreturn '{"success":true, "msg":"Page updated successfully"}'>
-                <!---cfreturn "Data updated successfully"---> 
+                <cfreturn {"success":true, "msg":"Page updated successfully"}>
                 <cfelse>
                     <cfquery name="insertRow">
                         insert into page (pageName,pageDes)
@@ -94,21 +93,23 @@
                             <cfqueryparam value="#arguments.pageDes#" cfsqltype="cf_sql_varchar">
                         )
                     </cfquery>
-                    <cfreturn '{"success":true,"msg":"Page inserted successfully"}'>
-                    <!---cfreturn "Data inserted successfully"--->
+                    <cfreturn {"success":true,"msg":"Page inserted successfully"}>
             </cfif>
         </cffunction>
 
         <cffunction name='checkPage' access="remote" returnformat="json">
+            <cfargument name="pageId" required="true">
             <cfargument name="pageName" required="true">
             <cfquery name="pageCheck">
-                select 1 from page
+                select pageName 
+                from page
                 where pageName=<cfqueryparam value="#arguments.pageName#" cfsqltype="cf_sql_varchar">
+                AND pageID !=<cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_integer">
             </cfquery>
             <cfif pageCheck.recordCount>
                 <cfreturn {"success":false, "msg":"The page is already present"}>
                 <cfelse>
-                    <cfreturn{"success":true, "msg":""}>
+                <cfreturn {"success":true, "msg":""}>
             </cfif>
         </cffunction>
 

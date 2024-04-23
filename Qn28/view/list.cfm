@@ -64,7 +64,7 @@
                         <tbody>
                         <tr>
                             <td class="">#pageName#</td>
-                            <td><a href="userView.cfm?idPage=#pageId#"><img src="../assets/images/viewIcon.png" class="ImgStyle" title="View page" alt='view'></a></td>
+                            <td><a href="view.cfm?idPage=#pageId#"><img src="../assets/images/viewIcon.png" class="ImgStyle" title="View page" alt='view'></a></td>
                         </tr> 
                         </tbody>          
                     </cfloop>

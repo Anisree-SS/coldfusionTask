@@ -34,6 +34,8 @@ $(document).ready(function() {
 
 
     $('#editForm').on("submit",function() {
+        var pageId = $('#pageId').val().trim(); 
+
         var pageName = $('#pageName').val().trim();
         $("#editSuccess").text(""); 
 
@@ -41,7 +43,7 @@ $(document).ready(function() {
             $.ajax({
                 url: '../models/pages.cfc?method=checkPage',
                 type: 'post',
-                data: { pageName : pageName},
+                data: {pageId : pageId, pageName : pageName},
                 dataType:"json",
                 success: function(response) {
                     console.log(response.success);
@@ -117,7 +119,7 @@ $(document).ready(function() {
         var pageDes = $('#pageDes').val().trim();
         $("#editSuccess").text(""); 
         $.ajax({
-            url: '../controller/pages.cfc?method=savePage',
+            url:'../controller/pages.cfc?method=savePage',
             type: 'post',
             data:{ pageId : pageId, pageName : pageName, pageDes : pageDes},
             dataType:"json",

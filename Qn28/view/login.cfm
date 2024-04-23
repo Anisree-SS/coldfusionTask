@@ -1,12 +1,4 @@
 <cfset result=createObject("component","CFC.pages").login()>
-<!---<cfif structKeyExists(form,"password")>
-    <cfinvoke component="CFC.pages" method="doLogin" >
-        <cfinvokeargument name="userName" value="#form.userName#">
-        <cfinvokeargument name="password" value="#form.password#">
-    </cfinvoke>
-</cfif>--->
-
-
 <cfinclude template = "header.cfm">
 <body class="container-fluid p-0">
     <cfoutput>
